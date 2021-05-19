@@ -13,4 +13,5 @@ To get more help, join the [KTaNE Discord server](https://discord.gg/ktane).
 Community features added:
 ```
 -Multiple Bombs Mission Editor (By Lupo511)
+-KeepCoding (By Emik)
 ```
