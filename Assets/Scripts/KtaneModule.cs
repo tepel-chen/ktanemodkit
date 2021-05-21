@@ -31,6 +31,7 @@ public abstract class KtaneModule : ModuleBase
     /// </summary>
     protected override void Awake()
     {
+        base.Awake();
         ModuleType = GetType();
         if (!DefaultCoroutineQueue.ContainsKey(ModuleType))
             DefaultCoroutineQueue.Add(
