@@ -12,7 +12,7 @@ namespace KModkit
     public sealed class ModInfo
     {
         /// <value>
-        /// Contains the ID of the mod, not to be mistaken with <see cref="ModuleScript.ModuleId"/>.
+        /// Contains the ID of the mod, not to be mistaken with <see cref="ModuleBase.ModuleId"/>.
         /// </value>
         [JsonProperty("id")]
         public string Id { get; private set; }

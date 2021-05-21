@@ -12,7 +12,7 @@ namespace KModkit
     /// <summary>
     /// Base class for regular and needy modded modules in Keep Talking and Nobody Explodes. Written by Emik.
     /// </summary>
-    public abstract class ModuleScript : MonoBehaviour, IModule
+    public abstract class ModuleBase : MonoBehaviour, IModule
     {
         /// <summary>
         /// Called when the lights turn on.
@@ -67,7 +67,7 @@ namespace KModkit
         /// <value>
         /// The Unique Id for this module of this type.
         /// </value>
-        public int ModuleId { get; private set; }
+        private int ModuleId { get; set; }
 
         /// <value>
         /// The amount of time left on the bomb, in seconds, rounded down.
@@ -93,7 +93,7 @@ namespace KModkit
                 var info = PathManager.GetModInfo(ModBundleName).Version;
                 if (info == null)
                     throw new OperationCanceledException(
-                        "ModBundleName couldn't be found. Did you spell your Mod name correctly? Refer to this link for more details: https://github.com/Emik03/KeepCoding/wiki/Chapter-2.1:-ModuleScript#version-string");
+                        "ModBundleName couldn't be found. Did you spell your Mod name correctly? Refer to this link for more details: https://github.com/Emik03/KeepCoding/wiki/Chapter-2.1:-ModuleBase#version-string");
                 return info;
             }
         }
@@ -130,7 +130,7 @@ namespace KModkit
         /// </summary>
         /// <exception cref="FormatException"></exception>
         /// <exception cref="NullIteratorException"></exception>
-        protected void Awake()
+        protected virtual void Awake()
         {
             Sounds = new Sound[0];
             _setActive = () =>
@@ -142,12 +142,12 @@ namespace KModkit
                 OnActivate();
             };
 
-            _components = new Dictionary<Type, Component[]>() {{typeof(ModuleScript), new[] {this}}};
+            _components = new Dictionary<Type, Component[]>() {{typeof(ModuleBase), new[] {this}}};
 
             _database = new Dictionary<string, Dictionary<string, object>[]>();
 
             ModBundleName.NullOrEmptyCheck(
-                "The public field \"ModBundleName\" is empty! This means that when compiled it won't be able to run! Please set this field to your Mod ID located at Keep Talking ModKit -> Configure Mod. Refer to this link for more details: https://github.com/Emik03/KeepCoding/wiki/Chapter-2.1:-ModuleScript#version-string");
+                "The public field \"ModBundleName\" is empty! This means that when compiled it won't be able to run! Please set this field to your Mod ID located at Keep Talking ModKit -> Configure Mod. Refer to this link for more details: https://github.com/Emik03/KeepCoding/wiki/Chapter-2.1:-ModuleBase#version-string");
 
             Module = new ModuleContainer(Get<KMBombModule>(allowNull: true), Get<KMNeedyModule>(allowNull: true));
 

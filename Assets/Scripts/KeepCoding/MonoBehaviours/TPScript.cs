@@ -8,7 +8,7 @@ namespace KModkit
     /// <summary>
     /// Base class for TwitchPlays support for regular and needy modded modules in Keep Talking and Nobody Explodes. Written by Emik.
     /// </summary>
-    public abstract class TPScript<TModule> : MonoBehaviour, ITP where TModule : ModuleScript
+    public abstract class TPScript<TModule> : MonoBehaviour, ITP where TModule : ModuleBase
     {
         /// <summary>
         /// The help message that gets sent when typing <c>!{0} help</c>.
@@ -36,7 +36,7 @@ namespace KModkit
                 {
                     var module = GetComponent<TModule>();
                     if(module==null)
-                        throw new MissingComponentException("TPScript cannot find your ModuleScript. Make sure that both script files are in the same game object!");
+                        throw new MissingComponentException("TPScript cannot find your ModuleBase. Make sure that both script files are in the same game object!");
                     _module = module;
                 }
                 return _module;
@@ -263,7 +263,7 @@ namespace KModkit
         }
 
         /// <summary>
-        /// Presses a sequence of buttons according to <paramref name="indices"/> within <paramref name="selectables"/>, waiting <paramref name="wait"/> seconds in-between each, and interrupting as soon as <see cref="ModuleScript.HasStruck"/> is true.
+        /// Presses a sequence of buttons according to <paramref name="indices"/> within <paramref name="selectables"/>, waiting <paramref name="wait"/> seconds in-between each, and interrupting as soon as <see cref="ModuleBase.HasStruck"/> is true.
         /// </summary>
         /// <param name="selectables">The array of selectables to interact with.</param>
         /// <param name="indices">The indices to press within the array.</param>
