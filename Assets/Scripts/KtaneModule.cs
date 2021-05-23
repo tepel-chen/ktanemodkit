@@ -4,10 +4,11 @@ using System.Reflection;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using KeepCoding;
 using KModkit;
 
 [RequireComponent(typeof(KMGameInfo))]
-public abstract class KtaneModule : ModuleBase
+public abstract class KtaneModule : ModuleScript
 {
     #region General
 
@@ -29,7 +30,7 @@ public abstract class KtaneModule : ModuleBase
     /// <summary>
     /// Called on the 0th frame
     /// </summary>
-    protected override void Awake()
+    protected new void Awake()
     {
         base.Awake();
         ModuleType = GetType();
