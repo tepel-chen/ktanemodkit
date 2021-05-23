@@ -13,6 +13,7 @@ To get more help, join the [KTaNE Discord server](https://discord.gg/ktane).
 Community features added:
 ```
 -Multiple Bombs Mission Editor (By Lupo511)
+-DMG Mission Editor (By ZekNikZ)
 -KeepCoding (By Emik)
 -KTaNE Module Utils (By Qkrisi)
 ```
