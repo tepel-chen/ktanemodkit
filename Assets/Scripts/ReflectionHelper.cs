@@ -20,6 +20,11 @@ namespace KModkit
                                              | BindingFlags.SetProperty;
 
         /// <summary>
+        /// The name of the game's internal assembly
+        /// </summary>
+        public const string GameAssembly = "Assembly-CSharp";
+
+        /// <summary>
         /// Get the specified type
         /// </summary>
         /// <param name="fullName">Name of the type</param>
@@ -37,7 +42,7 @@ namespace KModkit
         /// <returns></returns>
         public static Type FindGameType(string fullName)
         {
-            return FindType(fullName, "Assembly-CSharp");
+            return FindType(fullName, GameAssembly);
         }
     
         /// <summary>
