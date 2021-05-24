@@ -6,6 +6,6 @@ On this branch, only the base features of the KTaNE Modkit can be found.
 
 A modkit with all the community-made features can be found on the [master branch](https://github.com/qkrisi/ktanemodkit/tree/master).
 
-A temporary wiki can be found [here](https://github.com/keeptalkinggame/ktanemodkit/wiki).
+[Documentation](https://github.com/Qkrisi/ktanemodkit/wiki)
 
-To get more help, join the [KTaNE Discord server](https://discord.gg/ktane).
+To get more help, join the [Keep Talking and Nobody Explodes](https://discord.gg/ktane) or the [KTaNE Modding](https://discord.gg/qzy7Gdz) Discord servers.
