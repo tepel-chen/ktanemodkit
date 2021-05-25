@@ -15,5 +15,6 @@ Community features added:
 -Multiple Bombs Mission Editor (By Lupo511)
 -DMG Mission Editor (By ZekNikZ)
 -KeepCoding (By Emik)
+-KTaNE Utilities (By samfundev)
 -KTaNE Module Utils (By Qkrisi)
 ```
