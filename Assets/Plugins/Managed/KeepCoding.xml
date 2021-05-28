@@ -5652,18 +5652,34 @@
             <exception cref="T:KeepCoding.EmptyIteratorException"></exception>
             <exception cref="T:KeepCoding.NullIteratorException"></exception>
             <exception cref="T:System.IO.FileNotFoundException"></exception>
+            <typeparam name="T">The type to get the assembly from, which is used to get the name.</typeparam>
             <param name="_">Any data from the assembly, which is used to get the name.</param>
             <returns>A <see cref="T:KeepCoding.ModInfo"/> of the mod info json file located in the mod.</returns>
         </member>
         <member name="M:KeepCoding.PathManager.GetPath(System.String)">
             <summary>
-            Finds a path of a given file within each mod.
+            Finds the path of a given file within each mod.
             </summary>
             <exception cref="T:KeepCoding.EmptyIteratorException"></exception>
             <exception cref="T:System.IO.FileNotFoundException"></exception>
             <exception cref="T:KeepCoding.NullIteratorException"></exception>
             <param name="fileName">The file name to search for.</param>
             <returns>The path to <paramref name="fileName"/>.</returns>
+        </member>
+        <member name="M:KeepCoding.PathManager.GetPath(System.Type)">
+            <summary>
+            Finds the path of the mod.
+            </summary>
+            <param name="type">Any data from the assembly, which is used to get the name.</param>
+            <returns>The path to the mod.</returns>
+        </member>
+        <member name="M:KeepCoding.PathManager.GetPath``1(``0)">
+            <summary>
+            Finds the path of the mod.
+            </summary>
+            <typeparam name="T">The type to get the assembly from, which is used to get the name.</typeparam>
+            <param name="_">Any data from the assembly, which is used to get the name.</param>
+            <returns>The path to the mod.</returns>
         </member>
         <member name="M:KeepCoding.PathManager.LoadLibrary(System.String,System.String)">
             <summary>
@@ -5701,6 +5717,7 @@
             <exception cref="T:KeepCoding.EmptyIteratorException"></exception>
             <exception cref="T:System.IO.FileNotFoundException"></exception>
             <exception cref="T:KeepCoding.NullIteratorException"></exception>
+            <typeparam name="T">The type to get the assembly from, which is used to get the name.</typeparam>
             <param name="_">Any data from the assembly, which is used to get the name.</param>
             <param name="libraryFileName">The library's name, excluding the extension.</param>
         </member>
@@ -5733,6 +5750,7 @@
             <exception cref="T:KeepCoding.EmptyIteratorException"></exception>
             <exception cref="T:System.IO.FileNotFoundException"></exception>
             <exception cref="T:KeepCoding.NullIteratorException"></exception>
+            <typeparam name="T">The type to get the assembly from, which is used to get the name.</typeparam>
             <param name="_">Any data from the assembly, which is used to get the name.</param>
             <param name="bundleVideoFileName">The name of the bundle that contains videos.</param>
             <returns>The <see cref="T:UnityEngine.AssetBundleCreateRequest"/> needed to load the files, followed by the <see cref="T:UnityEngine.Video.VideoClip"/> <see cref="T:System.Array"/>.</returns>
