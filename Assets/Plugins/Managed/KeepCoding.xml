@@ -1505,63 +1505,67 @@
             KMFramework extension methods that makes it easier to assign multiple events to a variable in one statement. Written by Emik.
             </summary>
         </member>
-        <member name="M:KeepCoding.EventHelper.Assign(KMSelectable[],System.Nullable{System.Boolean},System.Action{System.Int32},System.Action{System.Int32},System.Action{System.Int32},System.Action{System.Int32},System.Action{System.Int32},System.Action{System.Int32},System.Action{System.Int32},System.Action{System.Int32},System.Action{System.Int32},System.Action{System.Int32},System.Action{System.Int32})">
+        <member name="M:KeepCoding.EventHelper.Assign(KMBombInfo,System.Action,System.Action)">
             <summary>
-            Assigns events specified into <paramref name="kmSelectable"/>. Reassigning them will replace their values. The number passed into each method represents the index that came from the array.
+            Assigns events specified into <paramref name="bombInfo"/>. Reassigning them will replace their values.
             </summary>
             <remarks>
-            An event that is null will be skipped. This extension method simplifies all of the KMFramework events into Actions.
+            An event that is null will be skipped. This extension method simplifies all of the KMFramework events into Actions or Functions.
             </remarks>
-            <exception cref="T:KeepCoding.NullIteratorException"></exception>
-            <exception cref="T:KeepCoding.EmptyIteratorException"></exception>
             <exception cref="T:UnityEngine.UnassignedReferenceException"></exception>
-            <param name="kmSelectable">The <see cref="T:KMSelectable"/> array to add events to.</param>
-            <param name="overrideReturn">True will make it act as a module/submodule, and false as a button. Null (default) will set it to true or false based on <see cref="M:KeepCoding.Helper.IsParent(KMSelectable)"/>. Note that in VR, <see cref="F:KMSelectable.OnHighlight"/> and <see cref="F:KMSelectable.OnHighlightEnded"/> are skipped out on.</param>
-            <param name="onCancel">Called when player backs out of this selectable.</param>
-            <param name="onDefocus">Called when a different selectable becomes the focus, or the module has been backed out of.</param>
-            <param name="onDeselect">Called when the selectable stops being the current selectable.</param>
-            <param name="onFocus">Called when a module is focused, this is when it is interacted with from the bomb face level and its children can be selected.</param>
-            <param name="onHighlight">Called when the highlight is turned on.</param>
-            <param name="onHighlightEnded">Called when the highlight is turned off.</param>
-            <param name="onInteract">Called when player interacts with the selctable.</param>
-            <param name="onInteractEnded">Called when a player interacting with the selectable releases the mouse or controller button.</param>
-            <param name="onLeft">Called when the left controller stick is pulled while selected.</param>
-            <param name="onRight">Called when the right controller stick is pulled while selected.</param>
-            <param name="onSelect">Called whenever the selectable becomes the current selectable.</param>
+            <param name="bombInfo">The bomb info instance to assign events to.</param>
+            <param name="onBombExploded">Called when the bomb explodes.</param>
+            <param name="onBombSolved">Called when the bomb is defused.</param>
         </member>
-        <member name="M:KeepCoding.EventHelper.Assign(KMSelectable[],System.Nullable{System.Boolean},System.Action{KMSelectable},System.Action{KMSelectable},System.Action{KMSelectable},System.Action{KMSelectable},System.Action{KMSelectable},System.Action{KMSelectable},System.Action{KMSelectable},System.Action{KMSelectable},System.Action{KMSelectable},System.Action{KMSelectable},System.Action{KMSelectable})">
+        <member name="M:KeepCoding.EventHelper.Assign(KMBombModule,System.Action,System.Action,System.Action)">
             <summary>
-            Assigns events specified into <paramref name="kmSelectable"/>. Reassigning them will replace their values. The number passed into each method represents the index that came from the array.
+            Assigns events specified into <paramref name="bombModule"/>. Reassigning them will replace their values.
             </summary>
             <remarks>
-            An event that is null will be skipped. This extension method simplifies all of the KMFramework events into Actions.
+            An event that is null will be skipped. This extension method simplifies all of the KMFramework events into Actions or Functions.
             </remarks>
-            <exception cref="T:KeepCoding.NullIteratorException"></exception>
-            <exception cref="T:KeepCoding.EmptyIteratorException"></exception>
-            <exception cref="T:UnityEngine.UnassignedReferenceException"></exception>
-            <param name="kmSelectable">The <see cref="T:KMSelectable"/> array to add events to.</param>
-            <param name="overrideReturn">True will make it act as a module/submodule, and false as a button. Null (default) will set it to true or false based on <see cref="M:KeepCoding.Helper.IsParent(KMSelectable)"/>. Note that in VR, <see cref="F:KMSelectable.OnHighlight"/> and <see cref="F:KMSelectable.OnHighlightEnded"/> are skipped out on.</param>
-            <param name="onCancel">Called when player backs out of this selectable.</param>
-            <param name="onDefocus">Called when a different selectable becomes the focus, or the module has been backed out of.</param>
-            <param name="onDeselect">Called when the selectable stops being the current selectable.</param>
-            <param name="onFocus">Called when a module is focused, this is when it is interacted with from the bomb face level and its children can be selected.</param>
-            <param name="onHighlight">Called when the highlight is turned on.</param>
-            <param name="onHighlightEnded">Called when the highlight is turned off.</param>
-            <param name="onInteract">Called when player interacts with the selctable.</param>
-            <param name="onInteractEnded">Called when a player interacting with the selectable releases the mouse or controller button.</param>
-            <param name="onLeft">Called when the left controller stick is pulled while selected.</param>
-            <param name="onRight">Called when the right controller stick is pulled while selected.</param>
-            <param name="onSelect">Called whenever the selectable becomes the current selectable.</param>
+            <param name="bombModule">The bomb instance to assign events to.</param>
+            <param name="onActivate">Called when the lights turn on.</param>
+            <param name="onPass">Called when the module is solved.</param>
+            <param name="onStrike">Called when the module strikes.</param>
         </member>
-        <member name="M:KeepCoding.EventHelper.Assign(KMSelectable,System.Nullable{System.Boolean},System.Action,System.Action,System.Action,System.Action,System.Action,System.Action,System.Action,System.Action,System.Action,System.Action,System.Action)">
+        <member name="M:KeepCoding.EventHelper.Assign(KMGameInfo,System.Action{KMGameInfo.State},System.Action{System.Boolean},System.Action{System.Boolean})">
             <summary>
-            Assigns events specified into <paramref name="kmSelectable"/>. Reassigning them will replace their values.
+            Assigns events specified into <paramref name="gameInfo"/>. Reassigning them will replace their values.
             </summary>
             <remarks>
             An event that is null will be skipped. This extension method simplifies all of the KMFramework events into Actions.
             </remarks>
             <exception cref="T:UnityEngine.UnassignedReferenceException"></exception>
-            <param name="kmSelectable">The KMSelectable array to add events to.</param>
+            <param name="gameInfo">The game info instance to assign events to.</param>
+            <param name="onStateChange">Called when the state of the game changes.</param>
+            <param name="onAlarmClockChange">Called when the alarm clock changes state, and passes in whether it's on or off.</param>
+            <param name="onLightsChange">Called when the lights change state, and passes in whether it's on or off.</param>
+        </member>
+        <member name="M:KeepCoding.EventHelper.Assign(KMNeedyModule,System.Action,System.Action,System.Action,System.Action,System.Action,System.Action)">
+            <summary>
+            Assigns events specified into <paramref name="needyModule"/>. Reassigning them will replace their values.
+            </summary>
+            <remarks>
+            An event that is null will be skipped. This extension method simplifies all of the KMFramework events into Actions or Functions.
+            </remarks>
+            <param name="needyModule">The needy instance to assign events to.</param>
+            <param name="onActivate">Called when the lights turn on.</param>
+            <param name="onNeedyActivation">Called when the needy activates.</param>
+            <param name="onNeedyDeactivation">Called when the needy deactivates.</param>
+            <param name="onPass">Called when the needy is solved.</param>
+            <param name="onStrike">Called when the needy strikes.</param>
+            <param name="onTimerExpired">Called when the timer runs out of time.</param>
+        </member>
+        <member name="M:KeepCoding.EventHelper.Assign(KMSelectable,System.Nullable{System.Boolean},System.Action,System.Action,System.Action,System.Action,System.Action,System.Action,System.Action,System.Action,System.Action{System.Single},System.Action,System.Action,System.Action,System.Action{KMSelectable})">
+            <summary>
+            Assigns events specified into <paramref name="selectable"/>. Reassigning them will replace their values.
+            </summary>
+            <remarks>
+            An event that is null will be skipped. This extension method simplifies all of the KMFramework events into Actions.
+            </remarks>
+            <exception cref="T:UnityEngine.UnassignedReferenceException"></exception>
+            <param name="selectable">The KMSelectable array to add events to.</param>
             <param name="overrideReturn">True will make it act as a module/submodule, and false as a button. Null (default) will set it to true or false based on <see cref="M:KeepCoding.Helper.IsParent(KMSelectable)"/>. Note that in VR, <see cref="F:KMSelectable.OnHighlight"/> and <see cref="F:KMSelectable.OnHighlightEnded"/> are skipped out on.</param>
             <param name="onCancel">Called when player backs out of this selectable. Return true will make it act as a module/submodule, and false as a button.</param>
             <param name="onDefocus">Called when a different selectable becomes the focus, or the module has been backed out of.</param>
@@ -1571,33 +1575,63 @@
             <param name="onHighlightEnded">Called when the highlight is turned off.</param>
             <param name="onInteract">Called when player interacts with the selctable. Return true will make it act as a module/submodule, and false as a button.</param>
             <param name="onInteractEnded">Called when a player interacting with the selectable releases the mouse or controller button.</param>
+            <param name="onInteractionPunch">Called when the interaction punch method is called.</param>
             <param name="onLeft">Called when the left controller stick is pulled while selected.</param>
             <param name="onRight">Called when the right controller stick is pulled while selected.</param>
             <param name="onSelect">Called whenever the selectable becomes the current selectable.</param>
+            <param name="onUpdateChildren">Called when the selectable updates its children.</param>
         </member>
-        <member name="M:KeepCoding.EventHelper.Assign(KMGameInfo,System.Action{System.Boolean},System.Action{System.Boolean})">
+        <member name="M:KeepCoding.EventHelper.Assign(KMSelectable[],System.Nullable{System.Boolean},System.Action{System.Int32},System.Action{System.Int32},System.Action{System.Int32},System.Action{System.Int32},System.Action{System.Int32},System.Action{System.Int32},System.Action{System.Int32},System.Action{System.Int32},System.Action{System.Int32,System.Single},System.Action{System.Int32},System.Action{System.Int32},System.Action{System.Int32},System.Action{System.Int32,KMSelectable})">
             <summary>
-            Assigns events specified into <paramref name="kmGameInfo"/>. Reassigning them will replace their values.
+            Assigns events specified into <paramref name="selectable"/>. Reassigning them will replace their values. The number passed into each method represents the index that came from the array.
             </summary>
             <remarks>
             An event that is null will be skipped. This extension method simplifies all of the KMFramework events into Actions.
             </remarks>
+            <exception cref="T:KeepCoding.NullIteratorException"></exception>
+            <exception cref="T:KeepCoding.EmptyIteratorException"></exception>
             <exception cref="T:UnityEngine.UnassignedReferenceException"></exception>
-            <param name="kmGameInfo">The game info instance to assign events to.</param>
-            <param name="onAlarmClockChange">Called when the alarm clock changes state, and passes in whether it's on or off.</param>
-            <param name="onLightsChange">Called when the lights change state, and passes in whether it's on or off.</param>
+            <param name="selectable">The <see cref="T:KMSelectable"/> array to add events to.</param>
+            <param name="overrideReturn">True will make it act as a module/submodule, and false as a button. Null (default) will set it to true or false based on <see cref="M:KeepCoding.Helper.IsParent(KMSelectable)"/>. Note that in VR, <see cref="F:KMSelectable.OnHighlight"/> and <see cref="F:KMSelectable.OnHighlightEnded"/> are skipped out on.</param>
+            <param name="onCancel">Called when player backs out of this selectable.</param>
+            <param name="onDefocus">Called when a different selectable becomes the focus, or the module has been backed out of.</param>
+            <param name="onDeselect">Called when the selectable stops being the current selectable.</param>
+            <param name="onFocus">Called when a module is focused, this is when it is interacted with from the bomb face level and its children can be selected.</param>
+            <param name="onHighlight">Called when the highlight is turned on.</param>
+            <param name="onHighlightEnded">Called when the highlight is turned off.</param>
+            <param name="onInteract">Called when player interacts with the selctable.</param>
+            <param name="onInteractEnded">Called when a player interacting with the selectable releases the mouse or controller button.</param>
+            <param name="onInteractionPunch">Called when the interaction punch method is called.</param>
+            <param name="onLeft">Called when the left controller stick is pulled while selected.</param>
+            <param name="onRight">Called when the right controller stick is pulled while selected.</param>
+            <param name="onSelect">Called whenever the selectable becomes the current selectable.</param>
+            <param name="onUpdateChildren">Called when the selectable updates its children.</param>
         </member>
-        <member name="M:KeepCoding.EventHelper.Assign(KMBombInfo,System.Action,System.Action)">
+        <member name="M:KeepCoding.EventHelper.Assign(KMSelectable[],System.Nullable{System.Boolean},System.Action{KMSelectable},System.Action{KMSelectable},System.Action{KMSelectable},System.Action{KMSelectable},System.Action{KMSelectable},System.Action{KMSelectable},System.Action{KMSelectable},System.Action{KMSelectable},System.Action{KMSelectable,System.Single},System.Action{KMSelectable},System.Action{KMSelectable},System.Action{KMSelectable},System.Action{KMSelectable,KMSelectable})">
             <summary>
-            Assigns events specified into <paramref name="kmBombInfo"/>. Reassigning them will replace their values.
+            Assigns events specified into <paramref name="selectable"/>. Reassigning them will replace their values. The number passed into each method represents the index that came from the array.
             </summary>
             <remarks>
-            An event that is null will be skipped. This extension method simplifies all of the KMFramework events into Actions or Functions.
+            An event that is null will be skipped. This extension method simplifies all of the KMFramework events into Actions.
             </remarks>
+            <exception cref="T:KeepCoding.NullIteratorException"></exception>
+            <exception cref="T:KeepCoding.EmptyIteratorException"></exception>
             <exception cref="T:UnityEngine.UnassignedReferenceException"></exception>
-            <param name="kmBombInfo">The bomb info instance to assign events to.</param>
-            <param name="onBombExploded">Called when the bomb explodes.</param>
-            <param name="onBombSolved">Called when the bomb is defused.</param>
+            <param name="selectable">The <see cref="T:KMSelectable"/> array to add events to.</param>
+            <param name="overrideReturn">True will make it act as a module/submodule, and false as a button. Null (default) will set it to true or false based on <see cref="M:KeepCoding.Helper.IsParent(KMSelectable)"/>. Note that in VR, <see cref="F:KMSelectable.OnHighlight"/> and <see cref="F:KMSelectable.OnHighlightEnded"/> are skipped out on.</param>
+            <param name="onCancel">Called when player backs out of this selectable.</param>
+            <param name="onDefocus">Called when a different selectable becomes the focus, or the module has been backed out of.</param>
+            <param name="onDeselect">Called when the selectable stops being the current selectable.</param>
+            <param name="onFocus">Called when a module is focused, this is when it is interacted with from the bomb face level and its children can be selected.</param>
+            <param name="onHighlight">Called when the highlight is turned on.</param>
+            <param name="onHighlightEnded">Called when the highlight is turned off.</param>
+            <param name="onInteract">Called when player interacts with the selctable.</param>
+            <param name="onInteractEnded">Called when a player interacting with the selectable releases the mouse or controller button.</param>
+            <param name="onInteractionPunch">Called when the interaction punch method is called.</param>
+            <param name="onLeft">Called when the left controller stick is pulled while selected.</param>
+            <param name="onRight">Called when the right controller stick is pulled while selected.</param>
+            <param name="onSelect">Called whenever the selectable becomes the current selectable.</param>
+            <param name="onUpdateChildren">Called when the selectable updates its children.</param>
         </member>
         <member name="M:KeepCoding.EventHelper.StopSound(KMAudio.KMAudioRef[])">
             <summary>
@@ -1611,6 +1645,46 @@
             </summary>
             <param name="sounds">The <see cref="T:KeepCoding.Sound"/> <see cref="T:System.Array"/> to mute all sounds from, using <see cref="F:KMAudio.KMAudioRef.StopSound"/>.</param>
         </member>
+        <member name="M:KeepCoding.EventHelper.Combine(System.Action,System.Action[])">
+            <summary>
+            Combines actions together, only if these actions are not <see langword="null"/>.
+            </summary>
+            <param name="self">The action to modify.</param>
+            <param name="others">The actions to combine with <paramref name="self"/>.</param>
+            <returns><paramref name="self"/> with <paramref name="others"/> appended.</returns>
+        </member>
+        <member name="M:KeepCoding.EventHelper.Combine``1(System.Action{``0},System.Action{``0}[])">
+            <summary>
+            Combines actions together, only if these actions are not <see langword="null"/>.
+            </summary>
+            <param name="self">The action to modify.</param>
+            <param name="others">The actions to combine with <paramref name="self"/>.</param>
+            <returns><paramref name="self"/> with <paramref name="others"/> appended.</returns>
+        </member>
+        <member name="M:KeepCoding.EventHelper.Combine``2(System.Action{``0,``1},System.Action{``0,``1}[])">
+            <summary>
+            Combines actions together, only if these actions are not <see langword="null"/>.
+            </summary>
+            <param name="self">The action to modify.</param>
+            <param name="others">The actions to combine with <paramref name="self"/>.</param>
+            <returns><paramref name="self"/> with <paramref name="others"/> appended.</returns>
+        </member>
+        <member name="M:KeepCoding.EventHelper.Combine``3(System.Action{``0,``1,``2},System.Action{``0,``1,``2}[])">
+            <summary>
+            Combines actions together, only if these actions are not <see langword="null"/>.
+            </summary>
+            <param name="self">The action to modify.</param>
+            <param name="others">The actions to combine with <paramref name="self"/>.</param>
+            <returns><paramref name="self"/> with <paramref name="others"/> appended.</returns>
+        </member>
+        <member name="M:KeepCoding.EventHelper.Combine``4(System.Action{``0,``1,``2,``3},System.Action{``0,``1,``2,``3}[])">
+            <summary>
+            Combines actions together, only if these actions are not <see langword="null"/>.
+            </summary>
+            <param name="self">The action to modify.</param>
+            <param name="others">The actions to combine with <paramref name="self"/>.</param>
+            <returns><paramref name="self"/> with <paramref name="others"/> appended.</returns>
+        </member>
         <member name="M:KeepCoding.EventHelper.Set``1(System.Delegate,``0@)">
             <summary>
             Adds a <see cref="T:System.Delegate"/> onto the referenced variable.
@@ -1620,7 +1694,7 @@
             <typeparam name="T">The type of the <paramref name="mutator"/> and <see cref="T:System.Delegate"/> casting.</typeparam>
             <param name="dele">The <see cref="T:System.Delegate"/> to add.</param>
             <param name="mutator">The variable that transmutates and adds <paramref name="dele"/> onto itself.</param>
-            <returns><paramref name="mutator"/> with <paramref name="dele"/> appended.</returns>
+            <returns><paramref name="mutator"/> with the value <paramref name="dele"/>, or itself if <paramref name="dele"/> is null.</returns>
         </member>
         <member name="M:KeepCoding.EventHelper.Cast``1(System.Delegate)">
             <summary>
@@ -1642,6 +1716,46 @@
             <typeparam name="T">The type of delegate to create.</typeparam>
             <param name="dele">The delegate to reference from.</param>
             <returns>A delegate of type <typeparamref name="T"/> using <paramref name="dele"/>'s target and method.</returns>
+        </member>
+        <member name="M:KeepCoding.EventHelper.Combine``1(System.Func{``0},System.Func{``0}[])">
+            <summary>
+            Combines actions together, only if these functions are not <see langword="null"/>.
+            </summary>
+            <param name="self">The function to modify.</param>
+            <param name="others">The functions to combine with <paramref name="self"/>.</param>
+            <returns><paramref name="self"/> with <paramref name="others"/> appended.</returns>
+        </member>
+        <member name="M:KeepCoding.EventHelper.Combine``2(System.Func{``0,``1},System.Func{``0,``1}[])">
+            <summary>
+            Combines actions together, only if these functions are not <see langword="null"/>.
+            </summary>
+            <param name="self">The function to modify.</param>
+            <param name="others">The functions to combine with <paramref name="self"/>.</param>
+            <returns><paramref name="self"/> with <paramref name="others"/> appended.</returns>
+        </member>
+        <member name="M:KeepCoding.EventHelper.Combine``3(System.Func{``0,``1,``2},System.Func{``0,``1,``2}[])">
+            <summary>
+            Combines actions together, only if these functions are not <see langword="null"/>.
+            </summary>
+            <param name="self">The function to modify.</param>
+            <param name="others">The functions to combine with <paramref name="self"/>.</param>
+            <returns><paramref name="self"/> with <paramref name="others"/> appended.</returns>
+        </member>
+        <member name="M:KeepCoding.EventHelper.Combine``4(System.Func{``0,``1,``2,``3},System.Func{``0,``1,``2,``3}[])">
+            <summary>
+            Combines actions together, only if these functions are not <see langword="null"/>.
+            </summary>
+            <param name="self">The function to modify.</param>
+            <param name="others">The functions to combine with <paramref name="self"/>.</param>
+            <returns><paramref name="self"/> with <paramref name="others"/> appended.</returns>
+        </member>
+        <member name="M:KeepCoding.EventHelper.Combine``5(System.Func{``0,``1,``2,``3,``4},System.Func{``0,``1,``2,``3,``4}[])">
+            <summary>
+            Combines actions together, only if these functions are not <see langword="null"/>.
+            </summary>
+            <param name="self">The function to modify.</param>
+            <param name="others">The functions to combine with <paramref name="self"/>.</param>
+            <returns><paramref name="self"/> with <paramref name="others"/> appended.</returns>
         </member>
         <member name="T:KeepCoding.Helper">
             <summary>
@@ -1919,6 +2033,14 @@
             <param name="toBaseNumber">Which base to convert it to.</param>
             <returns>The integer, but in the base specified.</returns>
         </member>
+        <member name="M:KeepCoding.Helper.Find(System.Collections.Generic.List{System.String},System.String)">
+            <summary>
+            Finds a file name within a list of directories, or <see langword="null"/> if none is found.
+            </summary>
+            <param name="directories">The list of directories.</param>
+            <param name="file">The file to search for.</param>
+            <returns>The directory containing the path to the file searched for, or <see langword="null"/>.</returns>
+        </member>
         <member name="M:KeepCoding.Helper.Form(System.String,System.Object[])">
             <summary>
             Formats the string. Shorthand for <see cref="M:System.String.Format(System.String,System.Object[])"/>.
@@ -1995,7 +2117,7 @@
             <param name="isRecursive">Whether it should search inside the variable and yield return the elements inside <paramref name="source"/>.</param>
             <returns>An <see cref="T:System.Object"/> <see cref="T:System.Array"/> of all elements within <paramref name="source"/>.</returns>
         </member>
-        <member name="M:KeepCoding.Helper.Logger(UnityEngine.LogType)">
+        <member name="M:KeepCoding.Helper.Method(UnityEngine.LogType)">
             <summary>
             Gets the appropriate log method depending on the type of <see cref="T:UnityEngine.LogType"/>.
             </summary>
@@ -2009,6 +2131,14 @@
             <param name="item">The left-hand side operator.</param>
             <param name="bigInteger">The right-hand side operator.</param>
             <returns>Itself mod <paramref name="bigInteger"/>.</returns>
+        </member>
+        <member name="M:KeepCoding.Helper.Stop(UnityEngine.MonoBehaviour,UnityEngine.Coroutine[])">
+            <summary>
+            Stops the coroutines only if they aren't <see langword="null"/>.
+            </summary>
+            <param name="monoBehaviour">The <see cref="T:UnityEngine.MonoBehaviour"/> instance needed to stop coroutines.</param>
+            <param name="coroutines">The <see cref="T:UnityEngine.Coroutine"/>s to stop.</param>
+            <returns>The array of <see cref="T:UnityEngine.Coroutine"/>s given.</returns>
         </member>
         <member name="M:KeepCoding.Helper.GetNullException``1(``0)">
             <summary>
@@ -2164,18 +2294,14 @@
             <param name="expression">The expression that retrieves the method.</param>
             <returns>The method info of the function.</returns>
         </member>
-        <member name="M:KeepCoding.Helper.Apply``2(``0,System.Func{``0,``1})">
+        <member name="M:KeepCoding.Helper.Assert``1(``0,System.String)">
             <summary>
-            Invokes a method of <typeparamref name="TInput"/> to <typeparamref name="TOutput"/> and then returns the argument provided.
+            Throws a <see cref="T:UnityEngine.MissingComponentException"/> if the component given is <see langword="null"/>, then returning the component <paramref name="component"/>.
             </summary>
-            <remarks>
-            This can be used to intercept current variables or calculations by for example, printing the value as it is being passed as an argument.
-            </remarks>
-            <typeparam name="TInput">The type of <paramref name="item"/>.</typeparam>
-            <typeparam name="TOutput">The type to return.</typeparam>
-            <param name="item">The item to use as reference and modify.</param>
-            <param name="func">The function to apply <paramref name="item"/> to.</param>
-            <returns>The item <paramref name="item"/> after <paramref name="func"/>.</returns>
+            <typeparam name="T">The type of component.</typeparam>
+            <param name="component">The component to do a null check on.</param>
+            <param name="message">The message of the exception.</param>
+            <returns>The component <paramref name="component"/>.</returns>
         </member>
         <member name="M:KeepCoding.Helper.Call``1(``0,System.Action{``0})">
             <summary>
@@ -2242,18 +2368,18 @@
             <param name="message">The optional message to throw if null.</param>
             <returns><paramref name="item"/></returns>
         </member>
-        <member name="M:KeepCoding.Helper.Apply``2(``0[],System.Func{``0,System.Int32,``1})">
+        <member name="M:KeepCoding.Helper.Apply``2(``0,System.Func{``0,``1})">
             <summary>
             Invokes a method of <typeparamref name="TInput"/> to <typeparamref name="TOutput"/> and then returns the argument provided.
             </summary>
             <remarks>
             This can be used to intercept current variables or calculations by for example, printing the value as it is being passed as an argument.
             </remarks>
-            <typeparam name="TInput">The type of <paramref name="items"/>.</typeparam>
+            <typeparam name="TInput">The type of <paramref name="item"/>.</typeparam>
             <typeparam name="TOutput">The type to return.</typeparam>
-            <param name="items">The item to use as reference and modify.</param>
-            <param name="func">The function to apply <paramref name="items"/> to.</param>
-            <returns>The item <paramref name="items"/> after <paramref name="func"/>.</returns>
+            <param name="item">The item to use as reference and modify.</param>
+            <param name="func">The function to apply <paramref name="item"/> to.</param>
+            <returns>The item <paramref name="item"/> after <paramref name="func"/>.</returns>
         </member>
         <member name="M:KeepCoding.Helper.Append``1(``0[],``0)">
             <summary>
@@ -2300,6 +2426,19 @@
             <param name="array">The array to be appended with.</param>
             <param name="item">The element to append to the <paramref name="array"/>.</param>
             <returns><paramref name="array"/>, but with an added <paramref name="item"/> as the first index.</returns>
+        </member>
+        <member name="M:KeepCoding.Helper.Apply``2(``0[],System.Func{``0,System.Int32,``1})">
+            <summary>
+            Invokes a method of <typeparamref name="TInput"/> to <typeparamref name="TOutput"/> and then returns the argument provided.
+            </summary>
+            <remarks>
+            This can be used to intercept current variables or calculations by for example, printing the value as it is being passed as an argument.
+            </remarks>
+            <typeparam name="TInput">The type of <paramref name="items"/>.</typeparam>
+            <typeparam name="TOutput">The type to return.</typeparam>
+            <param name="items">The item to use as reference and modify.</param>
+            <param name="func">The function to apply <paramref name="items"/> to.</param>
+            <returns>The item <paramref name="items"/> after <paramref name="func"/>.</returns>
         </member>
         <member name="T:KeepCoding.TypeHelper">
             <summary>
@@ -2386,9 +2525,9 @@
             <param name="concentrationOfB">The bias towards either color, between 0-1. 0.5 blends both colors equally.</param>
             <returns>The resulting color that the <paramref name="renderer"/> becomes.</returns>
         </member>
-        <member name="M:KeepCoding.TypeHelper.Replace(UnityEngine.Color,System.Nullable{System.Single},System.Nullable{System.Single},System.Nullable{System.Single},System.Nullable{System.Single})">
+        <member name="M:KeepCoding.TypeHelper.Set(UnityEngine.Color,System.Nullable{System.Single},System.Nullable{System.Single},System.Nullable{System.Single},System.Nullable{System.Single})">
             <summary>
-            Duplicates the color, and replaces the RGBA components only if they are specified.
+            Duplicates the color, and sets the RGBA components only if they are specified.
             </summary>
             <param name="color">The <see cref="T:UnityEngine.Color"/> to duplicate and modify.</param>
             <param name="r">The red component.</param>
@@ -2397,9 +2536,9 @@
             <param name="a">The alpha component; opacity.</param>
             <returns>A new instance of the <paramref name="color"/>, with the arguments replacing the values.</returns>
         </member>
-        <member name="M:KeepCoding.TypeHelper.Replace(UnityEngine.Color,System.Nullable{System.Byte},System.Nullable{System.Byte},System.Nullable{System.Byte},System.Nullable{System.Byte})">
+        <member name="M:KeepCoding.TypeHelper.Set(UnityEngine.Color,System.Nullable{System.Byte},System.Nullable{System.Byte},System.Nullable{System.Byte},System.Nullable{System.Byte})">
             <summary>
-            Duplicates the color, and replaces the RGBA components only if they are specified.
+            Duplicates the color, and sets the RGBA components only if they are specified.
             </summary>
             <param name="color">The <see cref="T:UnityEngine.Color"/> to duplicate and modify.</param>
             <param name="r">The red component.</param>
@@ -2463,9 +2602,9 @@
             <param name="concentrationOfB">The bias towards either color, between 0-1. 0.5 blends both colors equally.</param>
             <returns>The resulting color that the <paramref name="renderer"/> becomes.</returns>
         </member>
-        <member name="M:KeepCoding.TypeHelper.Replace(UnityEngine.Color32,System.Nullable{System.Single},System.Nullable{System.Single},System.Nullable{System.Single},System.Nullable{System.Single})">
+        <member name="M:KeepCoding.TypeHelper.Set(UnityEngine.Color32,System.Nullable{System.Single},System.Nullable{System.Single},System.Nullable{System.Single},System.Nullable{System.Single})">
             <summary>
-            Duplicates the color, and replaces the RGBA components only if they are specified.
+            Duplicates the color, and sets the RGBA components only if they are specified.
             </summary>
             <param name="color">The <see cref="T:UnityEngine.Color32"/> to duplicate and modify.</param>
             <param name="r">The red component.</param>
@@ -2474,9 +2613,9 @@
             <param name="a">The alpha component; opacity.</param>
             <returns>A new instance of the <paramref name="color"/>, with the arguments replacing the values.</returns>
         </member>
-        <member name="M:KeepCoding.TypeHelper.Replace(UnityEngine.Color32,System.Nullable{System.Byte},System.Nullable{System.Byte},System.Nullable{System.Byte},System.Nullable{System.Byte})">
+        <member name="M:KeepCoding.TypeHelper.Set(UnityEngine.Color32,System.Nullable{System.Byte},System.Nullable{System.Byte},System.Nullable{System.Byte},System.Nullable{System.Byte})">
             <summary>
-            Duplicates the color, and replaces the RGBA components only if they are specified.
+            Duplicates the color, and sets the RGBA components only if they are specified.
             </summary>
             <param name="color">The <see cref="T:UnityEngine.Color32"/> to duplicate and modify.</param>
             <param name="r">The red component.</param>
@@ -2484,6 +2623,16 @@
             <param name="b">The green component.</param>
             <param name="a">The alpha component; opacity.</param>
             <returns>A new instance of the <paramref name="color"/>, with the arguments replacing the values.</returns>
+        </member>
+        <member name="M:KeepCoding.TypeHelper.ToLogger``1(``0,System.String,System.Boolean)">
+            <summary>
+            Converts arguments to a new <see cref="T:KeepCoding.Logger"/>.
+            </summary>
+            <typeparam name="T">The type of the argument, which is used as the name if <paramref name="name"/> is null.</typeparam>
+            <param name="_">The discard which is only needed for the type.</param>
+            <param name="name">The name of the value.</param>
+            <param name="showId">Determines whether to show the unique identifier when logging.</param>
+            <returns>A new <see cref="T:KeepCoding.Logger"/> containing the arguments specified.</returns>
         </member>
         <member name="M:KeepCoding.TypeHelper.ToRoutine(UnityEngine.MonoBehaviour,System.Func{System.Collections.IEnumerator})">
             <summary>
@@ -2571,7 +2720,7 @@
         </member>
         <member name="M:KeepCoding.TypeHelper.Add(UnityEngine.Vector2@,System.Single,System.Single)">
             <summary>
-            Duplicates the vector, and replaces the x and y components only if they are specified.
+            Duplicates the vector, and sets the x and y components only if they are specified.
             </summary>
             <param name="vector">The <see cref="T:UnityEngine.Vector2"/> to duplicate and modify.</param>
             <param name="x">The x value.</param>
@@ -2580,7 +2729,7 @@
         </member>
         <member name="M:KeepCoding.TypeHelper.Add(UnityEngine.Vector2,System.Single,System.Single)">
             <summary>
-            Takes the vector, and replaces the x and y components only if they are specified.
+            Takes the vector, and sets the x and y components only if they are specified.
             </summary>
             <param name="vector">The <see cref="T:UnityEngine.Vector2"/> to duplicate and modify.</param>
             <param name="x">The x value.</param>
@@ -2589,7 +2738,7 @@
         </member>
         <member name="M:KeepCoding.TypeHelper.Add(UnityEngine.Vector3@,System.Single,System.Single,System.Single)">
             <summary>
-            Duplicates the vector, and replaces the x, y, and z components only if they are specified.
+            Duplicates the vector, and sets the x, y, and z components only if they are specified.
             </summary>
             <param name="vector">The <see cref="T:UnityEngine.Vector3"/> to duplicate and modify.</param>
             <param name="x">The x value.</param>
@@ -2599,7 +2748,7 @@
         </member>
         <member name="M:KeepCoding.TypeHelper.Add(UnityEngine.Vector3,System.Single,System.Single,System.Single)">
             <summary>
-            Takes the vector, and replaces the x, y, and z components only if they are specified.
+            Takes the vector, and sets the x, y, and z components only if they are specified.
             </summary>
             <param name="vector">The <see cref="T:UnityEngine.Vector3"/> to duplicate and modify.</param>
             <param name="x">The x value.</param>
@@ -2609,7 +2758,7 @@
         </member>
         <member name="M:KeepCoding.TypeHelper.Add(UnityEngine.Vector4@,System.Single,System.Single,System.Single,System.Single)">
             <summary>
-            Duplicates the vector, and replaces the x, y, z, and w components only if they are specified.
+            Duplicates the vector, and sets the x, y, z, and w components only if they are specified.
             </summary>
             <param name="vector">The <see cref="T:UnityEngine.Vector3"/> to duplicate and modify.</param>
             <param name="x">The x value.</param>
@@ -2620,7 +2769,7 @@
         </member>
         <member name="M:KeepCoding.TypeHelper.Add(UnityEngine.Vector4,System.Single,System.Single,System.Single,System.Single)">
             <summary>
-            Takes the vector, and replaces the x, y, z, and w components only if they are specified.
+            Takes the vector, and sets the x, y, z, and w components only if they are specified.
             </summary>
             <param name="vector">The <see cref="T:UnityEngine.Vector3"/> to duplicate and modify.</param>
             <param name="x">The x value.</param>
@@ -2629,27 +2778,27 @@
             <param name="w">The w value.</param>
             <returns>A new instance of <paramref name="vector"/>, with the arguments replacing the values.</returns>
         </member>
-        <member name="M:KeepCoding.TypeHelper.Replace(UnityEngine.Vector2@,System.Nullable{System.Single},System.Nullable{System.Single})">
+        <member name="M:KeepCoding.TypeHelper.Set(UnityEngine.Vector2@,System.Nullable{System.Single},System.Nullable{System.Single})">
             <summary>
-            Takes the vector, and replaces the x and y components only if they are specified.
+            Takes the vector, and sets the x and y components only if they are specified.
             </summary>
             <param name="vector">The <see cref="T:UnityEngine.Vector2"/> to duplicate and modify.</param>
             <param name="x">The x value.</param>
             <param name="y">The y value.</param>
             <returns>A new instance of <paramref name="vector"/>, with the arguments replacing the values.</returns>
         </member>
-        <member name="M:KeepCoding.TypeHelper.Replace(UnityEngine.Vector2,System.Nullable{System.Single},System.Nullable{System.Single})">
+        <member name="M:KeepCoding.TypeHelper.Set(UnityEngine.Vector2,System.Nullable{System.Single},System.Nullable{System.Single})">
             <summary>
-            Duplicates the vector, and replaces the x and y components only if they are specified.
+            Duplicates the vector, and sets the x and y components only if they are specified.
             </summary>
             <param name="vector">The <see cref="T:UnityEngine.Vector2"/> to duplicate and modify.</param>
             <param name="x">The x value.</param>
             <param name="y">The y value.</param>
             <returns>A new instance of <paramref name="vector"/>, with the arguments replacing the values.</returns>
         </member>
-        <member name="M:KeepCoding.TypeHelper.Replace(UnityEngine.Vector3@,System.Nullable{System.Single},System.Nullable{System.Single},System.Nullable{System.Single})">
+        <member name="M:KeepCoding.TypeHelper.Set(UnityEngine.Vector3@,System.Nullable{System.Single},System.Nullable{System.Single},System.Nullable{System.Single})">
             <summary>
-            Takes the vector, and replaces the x, y, and z components only if they are specified.
+            Takes the vector, and sets the x, y, and z components only if they are specified.
             </summary>
             <param name="vector">The <see cref="T:UnityEngine.Vector3"/> to duplicate and modify.</param>
             <param name="x">The x value.</param>
@@ -2657,9 +2806,9 @@
             <param name="z">The z value.</param>
             <returns>A new instance of <paramref name="vector"/>, with the arguments replacing the values.</returns>
         </member>
-        <member name="M:KeepCoding.TypeHelper.Replace(UnityEngine.Vector3,System.Nullable{System.Single},System.Nullable{System.Single},System.Nullable{System.Single})">
+        <member name="M:KeepCoding.TypeHelper.Set(UnityEngine.Vector3,System.Nullable{System.Single},System.Nullable{System.Single},System.Nullable{System.Single})">
             <summary>
-            Duplicates the vector, and replaces the x, y, and z components only if they are specified.
+            Duplicates the vector, and sets the x, y, and z components only if they are specified.
             </summary>
             <param name="vector">The <see cref="T:UnityEngine.Vector3"/> to duplicate and modify.</param>
             <param name="x">The x value.</param>
@@ -2667,9 +2816,9 @@
             <param name="z">The z value.</param>
             <returns>A new instance of <paramref name="vector"/>, with the arguments replacing the values.</returns>
         </member>
-        <member name="M:KeepCoding.TypeHelper.Replace(UnityEngine.Vector4@,System.Nullable{System.Single},System.Nullable{System.Single},System.Nullable{System.Single},System.Nullable{System.Single})">
+        <member name="M:KeepCoding.TypeHelper.Set(UnityEngine.Vector4@,System.Nullable{System.Single},System.Nullable{System.Single},System.Nullable{System.Single},System.Nullable{System.Single})">
             <summary>
-            Takes the vector, and replaces the x, y, z, and w components only if they are specified.
+            Takes the vector, and sets the x, y, z, and w components only if they are specified.
             </summary>
             <param name="vector">The <see cref="T:UnityEngine.Vector3"/> to duplicate and modify.</param>
             <param name="x">The x value.</param>
@@ -2678,9 +2827,9 @@
             <param name="w">The w value.</param>
             <returns>A new instance of <paramref name="vector"/>, with the arguments replacing the values.</returns>
         </member>
-        <member name="M:KeepCoding.TypeHelper.Replace(UnityEngine.Vector4,System.Nullable{System.Single},System.Nullable{System.Single},System.Nullable{System.Single},System.Nullable{System.Single})">
+        <member name="M:KeepCoding.TypeHelper.Set(UnityEngine.Vector4,System.Nullable{System.Single},System.Nullable{System.Single},System.Nullable{System.Single},System.Nullable{System.Single})">
             <summary>
-            Duplicates the vector, and replaces the x, y, z, and w components only if they are specified.
+            Duplicates the vector, and sets the x, y, z, and w components only if they are specified.
             </summary>
             <param name="vector">The <see cref="T:UnityEngine.Vector3"/> to duplicate and modify.</param>
             <param name="x">The x value.</param>
@@ -3576,6 +3725,92 @@
             </summary>
             <returns>Time, number of strikes, and the pools converted to a string.</returns>
         </member>
+        <member name="T:KeepCoding.Logger">
+            <summary>
+            A class to allow logging with a specific format. Written by Emik.
+            </summary>
+        </member>
+        <member name="M:KeepCoding.Logger.#ctor(System.String,System.Boolean)">
+            <summary>
+            The string constructor. The string determines the name.
+            </summary>
+            <exception cref="T:KeepCoding.NullIteratorException"></exception>
+            <exception cref="T:System.FormatException"></exception>
+            <param name="name">The name of the value.</param>
+            <param name="showId">Determines whether to show the unique identifier when logging.</param>
+        </member>
+        <member name="M:KeepCoding.Logger.#ctor(System.Type,System.Boolean)">
+            <summary>
+            The type constructor. The type's name determines the name.
+            </summary>
+            <param name="type">The name of the value, using <see cref="P:System.Reflection.MemberInfo.Name"/>.</param>
+            <param name="showId">Determines whether to show the unique identifier when logging.</param>
+        </member>
+        <member name="P:KeepCoding.Logger.Id">
+            <value>
+            The unique identifier of the current name.
+            </value>
+        </member>
+        <member name="P:KeepCoding.Logger.Name">
+            <value>
+            The name of the logger.
+            </value>
+        </member>
+        <member name="M:KeepCoding.Logger.Dump(System.Object,System.Boolean)">
+            <summary>
+            Dumps all information that it can find of the type using reflection. This should only be used to debug.
+            </summary>
+            <param name="obj">The object to reflect on.</param>
+            <param name="getVariables">Whether it should search recursively for the elements within the elements.</param>
+        </member>
+        <member name="M:KeepCoding.Logger.Dump(System.Boolean,System.Linq.Expressions.Expression{System.Func{System.Object}}[])">
+            <summary>
+            Dumps all information about the variables specified. Each element uses the syntax () => varName. This should only be used to debug.
+            </summary>
+            <param name="getVariables">Whether it should search recursively for the elements within the elements.</param>
+            <param name="logs">All of the variables to throughly log.</param>
+        </member>
+        <member name="M:KeepCoding.Logger.Dump(System.Linq.Expressions.Expression{System.Func{System.Object}}[])">
+            <summary>
+            Dumps all information about the variables specified. Each element uses the syntax () => varName. This should only be used to debug.
+            </summary>
+            <param name="logs">All of the variables to throughly log.</param>
+        </member>
+        <member name="M:KeepCoding.Logger.Equals(System.Object)">
+            <summary>
+            Determines if both objects are equal.
+            </summary>
+            <param name="obj">The comparison.</param>
+            <returns>Whether both objects are equal.</returns>
+        </member>
+        <member name="M:KeepCoding.Logger.GetHashCode">
+            <summary>
+            Gets the hash code of the object.
+            </summary>
+            <returns>The hash code.</returns>
+        </member>
+        <member name="M:KeepCoding.Logger.Log``1(``0,UnityEngine.LogType)">
+            <summary>
+            Logs message, but formats it to be compliant with the Logfile Analyzer.
+            </summary>
+            <exception cref="T:KeepCoding.UnrecognizedValueException"></exception>
+            <param name="message">The message to log.</param>
+            <param name="logType">The type of logging. Different logging types have different icons within the editor.</param>
+        </member>
+        <member name="M:KeepCoding.Logger.Log``1(``0,System.Object[])">
+            <summary>
+            Logs multiple entries, but formats it to be compliant with the Logfile Analyzer.
+            </summary>
+            <exception cref="T:KeepCoding.UnrecognizedValueException"></exception>
+            <param name="message">The message to log.</param>
+            <param name="args">All of the arguments to embed into <paramref name="message"/>.</param>
+        </member>
+        <member name="M:KeepCoding.Logger.LogMultiple(System.String[]@)">
+            <summary>
+            Logs multiple entries to the console.
+            </summary>
+            <param name="logs">The array of logs to individual output into the console.</param>
+        </member>
         <member name="T:KeepCoding.ModInfo">
             <summary>
             Contains information about the mod's info, this class can be used to deserialize every mod's "modInfo.json".
@@ -3583,7 +3818,7 @@
         </member>
         <member name="P:KeepCoding.ModInfo.Id">
             <value>
-            Contains the ID of the mod, not to be mistaken with <see cref="P:KeepCoding.ModuleScript.ModuleId"/>.
+            Contains the ID of the mod, not to be mistaken with <see cref="P:KeepCoding.ModuleScript.Id"/>.
             </value>
         </member>
         <member name="P:KeepCoding.ModInfo.Title">
@@ -3646,6 +3881,12 @@
             <exception cref="T:KeepCoding.ConstructorArgumentException"></exception>
             <param name="solvable">The instance of a normal module.</param>
             <param name="needy">The instance of a needy module.</param>
+        </member>
+        <member name="M:KeepCoding.ModuleContainer.#ctor(UnityEngine.Component)">
+            <summary>
+            Encapsulates either a solvable or needy module. Uses <see cref="M:UnityEngine.Component.GetComponent``1"/>.
+            </summary>
+            <param name="component">The component to get the modules from.</param>
         </member>
         <member name="P:KeepCoding.ModuleContainer.RequiresTimerVisibility">
             <value>
@@ -3727,6 +3968,17 @@
             </summary>
             <param name="container">The <see cref="T:KeepCoding.ModuleContainer"/> to get the <see cref="T:KMNeedyModule"/> from.</param>
             <returns>A <see cref="T:KMBombModule"/> from <see cref="P:KeepCoding.ModuleContainer.Needy"/>.</returns>
+        </member>
+        <member name="M:KeepCoding.ModuleContainer.Assign(System.Action,System.Action,System.Action,System.Action,System.Action,System.Action)">
+            <summary>
+            Assigns events to a module container, replacing their values.
+            </summary>
+            <param name="onActivate">Called when the lights turn on.</param>
+            <param name="onNeedyActivation">Called when the needy activates.</param>
+            <param name="onNeedyDeactivation">Called when the needy deactivates.</param>
+            <param name="onPass">Called when the needy is solved.</param>
+            <param name="onStrike">Called when the needy strikes.</param>
+            <param name="onTimerExpired">Called when the timer runs out of time.</param>
         </member>
         <member name="M:KeepCoding.ModuleContainer.OnActivate(System.Action)">
             <summary>
@@ -4588,6 +4840,51 @@
             </summary>
             <returns><see cref="T:UnityEngine.WaitWhile"/> in various places until the thread has been finished.</returns>
         </member>
+        <member name="T:KeepCoding.IDump">
+            <summary>
+            An interface to implement dump methods. Make each method return the same method in your <see cref="T:KeepCoding.Logger"/> instance. Written by Emik.
+            </summary>
+        </member>
+        <member name="M:KeepCoding.IDump.Dump(System.Boolean,System.Linq.Expressions.Expression{System.Func{System.Object}}[])">
+            <summary>
+            Dumps all information about the variables specified. Each element uses the syntax () => varName. This should only be used to debug.
+            </summary>
+            <param name="getVariables">Whether it should search recursively for the elements within the elements.</param>
+            <param name="logs">All of the variables to throughly log.</param>
+        </member>
+        <member name="M:KeepCoding.IDump.Dump(System.Linq.Expressions.Expression{System.Func{System.Object}}[])">
+            <summary>
+            Dumps all information about the variables specified. Each element uses the syntax () => varName. This should only be used to debug.
+            </summary>
+            <param name="logs">All of the variables to throughly log.</param>
+        </member>
+        <member name="T:KeepCoding.ILog">
+            <summary>
+            An interface to implement log methods. Make each method return the same method in your <see cref="T:KeepCoding.Logger"/> instance.  Written by Emik.
+            </summary>
+        </member>
+        <member name="M:KeepCoding.ILog.Log``1(``0,UnityEngine.LogType)">
+            <summary>
+            Logs message, but formats it to be compliant with the Logfile Analyzer.
+            </summary>
+            <exception cref="T:KeepCoding.UnrecognizedValueException"></exception>
+            <param name="message">The message to log.</param>
+            <param name="logType">The type of logging. Different logging types have different icons within the editor.</param>
+        </member>
+        <member name="M:KeepCoding.ILog.Log``1(``0,System.Object[])">
+            <summary>
+            Logs multiple entries, but formats it to be compliant with the Logfile Analyzer.
+            </summary>
+            <exception cref="T:KeepCoding.UnrecognizedValueException"></exception>
+            <param name="message">The message to log.</param>
+            <param name="args">All of the arguments to embed into <paramref name="message"/>.</param>
+        </member>
+        <member name="M:KeepCoding.ILog.LogMultiple(System.String[]@)">
+            <summary>
+            Logs multiple entries to the console.
+            </summary>
+            <param name="logs">The array of logs to individual output into the console.</param>
+        </member>
         <member name="T:KeepCoding.ITP">
             <summary>
             Interface for Twitch Plays support. Written by Emik.
@@ -4695,70 +4992,82 @@
             All of the tuple's items as an array, ordered by item number.
             </value>
         </member>
-        <member name="T:KeepCoding.DynamicAudio">
+        <member name="T:KeepCoding.AudioScript">
             <summary>
             Advanced audio handler. Written by Emik.
             </summary>
         </member>
-        <member name="F:KeepCoding.DynamicAudio._isMusic">
-            <summary>
-            Setting this value to true will make the volume relative to <see cref="P:KeepCoding.Game.PlayerSettings.MusicVolume"/>, and <see cref="P:KeepCoding.Game.PlayerSettings.SFXVolume"/> otherwise.
-            </summary>
+        <member name="P:KeepCoding.AudioScript.IsMuted">
+            <value>
+            Determines if the <see cref="P:KeepCoding.AudioScript.AudioSource"/> is muted.
+            </value>
         </member>
-        <member name="P:KeepCoding.DynamicAudio.IsPlaying">
+        <member name="P:KeepCoding.AudioScript.IsPlaying">
             <value>
             Determines if the audio source is currently playing.
             </value>
         </member>
-        <member name="P:KeepCoding.DynamicAudio.GameVolume">
+        <member name="P:KeepCoding.AudioScript.Game">
             <value>
             The current volume of the game. Ranges 0 to 100. In the Editor this value will always return 100.
             </value>
         </member>
-        <member name="F:KeepCoding.DynamicAudio._volume">
-            <summary>
-            The volume it plays relative to the game sound. Works the same as <see cref="P:UnityEngine.AudioSource.volume"/>, meaning 0 to 1 is the main range.
-            </summary>
+        <member name="P:KeepCoding.AudioScript.Relative">
+            <value>
+            The volume the <see cref="P:KeepCoding.AudioScript.AudioSource"/> is playing at, determined by <see cref="P:KeepCoding.AudioScript.Volume"/> and <see cref="P:KeepCoding.AudioScript.Game"/>.
+            </value>
         </member>
-        <member name="F:KeepCoding.DynamicAudio._audioClips">
-            <summary>
-            The <see cref="T:System.Array"/> of clips it can play from.
-            </summary>
+        <member name="P:KeepCoding.AudioScript.Volume">
+            <value>
+            The volume of the sound relative to the game.
+            </value>
         </member>
-        <member name="P:KeepCoding.DynamicAudio.AudioSource">
+        <member name="P:KeepCoding.AudioScript.AudioSource">
             <value>
             The audio source property. If the field it is referencing is <see langword="null"/> then it adds a component.
             </value>
         </member>
-        <member name="F:KeepCoding.DynamicAudio._audioSource">
+        <member name="F:KeepCoding.AudioScript._isSFX">
+            <summary>
+            Setting this value to true will make the volume relative to <see cref="P:KeepCoding.Game.PlayerSettings.MusicVolume"/>, and <see cref="P:KeepCoding.Game.PlayerSettings.SFXVolume"/> otherwise.
+            </summary>
+        </member>
+        <member name="F:KeepCoding.AudioScript._audioClips">
+            <summary>
+            The <see cref="T:System.Array"/> of clips it can play from.
+            </summary>
+        </member>
+        <member name="F:KeepCoding.AudioScript._audioSource">
             <summary>
             The audio source field.
             </summary>
         </member>
-        <member name="M:KeepCoding.DynamicAudio.op_Explicit(KeepCoding.DynamicAudio)~UnityEngine.AudioSource">
+        <member name="M:KeepCoding.AudioScript.op_Explicit(KeepCoding.AudioScript)~UnityEngine.AudioSource">
             <summary>
-            Returns the <see cref="P:KeepCoding.DynamicAudio.AudioSource"/>.
+            Returns the <see cref="P:KeepCoding.AudioScript.AudioSource"/>.
             </summary>
-            <param name="dynamicAudio">The instance of <see cref="T:KeepCoding.DynamicAudio"/> to retrieve <see cref="P:KeepCoding.DynamicAudio.AudioSource"/> from.</param>
+            <param name="dynamicAudio">The instance of <see cref="T:KeepCoding.AudioScript"/> to retrieve <see cref="P:KeepCoding.AudioScript.AudioSource"/> from.</param>
         </member>
-        <member name="M:KeepCoding.DynamicAudio.Fade(System.Single,System.Single)">
+        <member name="M:KeepCoding.AudioScript.Fade(System.Single,System.Single)">
             <summary>
             Fades the audio source to a specific volume from a specified duration of time linearly.
             </summary>
             <param name="volume">The volume to get to.</param>
             <param name="time">The amount of time it takes to get to <paramref name="volume"/>.</param>
         </member>
-        <member name="M:KeepCoding.DynamicAudio.Pause">
+        <member name="M:KeepCoding.AudioScript.Pause">
             <summary>
             Pauses playing the clip.
             </summary>
         </member>
-        <member name="M:KeepCoding.DynamicAudio.Play(UnityEngine.AudioClip,System.Boolean,System.Int32,System.Single,System.Single,System.Single,System.Single)">
+        <member name="M:KeepCoding.AudioScript.Play(UnityEngine.AudioClip,System.Boolean,System.Byte,System.Single,System.Single,System.Single,System.Single)">
             <summary>
             Plays a sound, with optional parameters.
             </summary>
+            <remarks>
+            The sound can be cancelled with this method, but multiple sounds cannot play simultaneously.
+            </remarks>
             <exception cref="T:KeepCoding.NullIteratorException"></exception>
-            <exception cref="T:System.NullReferenceException"></exception>
             <param name="clip">The sound clip to play.</param>
             <param name="volume">The volume of the sound clip relative to the game sound.</param>
             <param name="loop">If the sound should be looped.</param>
@@ -4767,14 +5076,16 @@
             <param name="time">The time in the audio it should start playing at.</param>
             <param name="pitch">The pitch of the sound.</param>
         </member>
-        <member name="M:KeepCoding.DynamicAudio.Play(System.String,System.Boolean,System.Int32,System.Single,System.Single,System.Single,System.Single)">
+        <member name="M:KeepCoding.AudioScript.Play(System.String,System.Boolean,System.Byte,System.Single,System.Single,System.Single,System.Single)">
             <summary>
             Plays a sound, with optional parameters.
             </summary>
+            <remarks>
+            The sound can be cancelled with this method, but multiple sounds cannot play simultaneously.
+            </remarks>
             <exception cref="T:KeepCoding.NullIteratorException"></exception>
-            <exception cref="T:System.NullReferenceException"></exception>
             <exception cref="T:UnityEngine.MissingComponentException"></exception>
-            <param name="sound">The sound clip to play.</param>
+            <param name="name">The name of the sound clip to play.</param>
             <param name="volume">The volume of the sound clip relative to the game sound.</param>
             <param name="loop">If the sound should be looped.</param>
             <param name="priority">The priority of the sound.</param>
@@ -4782,14 +5093,47 @@
             <param name="time">The time in the audio it should start playing at.</param>
             <param name="pitch">The pitch of the sound.</param>
         </member>
-        <member name="M:KeepCoding.DynamicAudio.Stop">
+        <member name="M:KeepCoding.AudioScript.PlayStackable(UnityEngine.AudioClip,System.Boolean,System.Byte,System.Single,System.Single,System.Single,System.Single)">
+            <summary>
+            Plays a sound, with optional parameters.
+            </summary>
+            <remarks>
+            Multiple sounds can be played simultaneously with this method, however they cannot be cancelled.
+            </remarks>
+            <exception cref="T:KeepCoding.NullIteratorException"></exception>
+            <param name="clip">The sound clip to play.</param>
+            <param name="volume">The volume of the sound clip relative to the game sound.</param>
+            <param name="loop">If the sound should be looped.</param>
+            <param name="priority">The priority of the sound.</param>
+            <param name="delay">The amount of delay before the sound starts.</param>
+            <param name="time">The time in the audio it should start playing at.</param>
+            <param name="pitch">The pitch of the sound.</param>
+        </member>
+        <member name="M:KeepCoding.AudioScript.PlayStackable(System.String,System.Boolean,System.Byte,System.Single,System.Single,System.Single,System.Single)">
+            <summary>
+            Plays a sound, with optional parameters.
+            </summary>
+            <remarks>
+            Multiple sounds can be played simultaneously with this method, however they cannot be cancelled.
+            </remarks>
+            <exception cref="T:KeepCoding.NullIteratorException"></exception>
+            <exception cref="T:UnityEngine.MissingComponentException"></exception>
+            <param name="name">The name of the sound clip to play.</param>
+            <param name="volume">The volume of the sound clip relative to the game sound.</param>
+            <param name="loop">If the sound should be looped.</param>
+            <param name="priority">The priority of the sound.</param>
+            <param name="delay">The amount of delay before the sound starts.</param>
+            <param name="time">The time in the audio it should start playing at.</param>
+            <param name="pitch">The pitch of the sound.</param>
+        </member>
+        <member name="M:KeepCoding.AudioScript.Stop">
             <summary>
             Stops playing the clip.
             </summary>
         </member>
-        <member name="M:KeepCoding.DynamicAudio.Unpause">
+        <member name="M:KeepCoding.AudioScript.Unpause">
             <summary>
-            Unpauses the paused playback of this <see cref="P:KeepCoding.DynamicAudio.AudioSource"/>.
+            Unpauses the paused playback of this <see cref="P:KeepCoding.AudioScript.AudioSource"/>.
             </summary>
         </member>
         <member name="T:KeepCoding.ModuleScript">
@@ -4829,13 +5173,18 @@
         </member>
         <member name="P:KeepCoding.ModuleScript.IsVR">
             <value>
-            Determines whether the game is being played in Virtual Reality.
+            Determines whether the game is being played in Virtual Reality. In the Editor, it always returns false.
             </value>
         </member>
-        <member name="P:KeepCoding.ModuleScript.ModuleId">
+        <member name="P:KeepCoding.ModuleScript.Id">
             <value>
-            The Unique Id for this module of this type.
+            The Unique Id for the module of this type.
             </value>
+        </member>
+        <member name="P:KeepCoding.ModuleScript.LastId">
+            <summary>
+            The last Id instantiation for the module of this type.
+            </summary>
         </member>
         <member name="P:KeepCoding.ModuleScript.TimeLeft">
             <value>
@@ -4879,18 +5228,19 @@
             This removed the exception catcher. If you have an OnDestroy method, be sure to call <c>base.OnDestroy()</c> as the first statement.
             </summary>
         </member>
-        <member name="M:KeepCoding.ModuleScript.Assign(System.Action,System.Action,System.Action,System.Action)">
+        <member name="M:KeepCoding.ModuleScript.Assign(System.Action,System.Action,System.Action,System.Action,System.Action,System.Action)">
             <summary>
-            Assigns events specified into <see cref="T:KMBombModule"/> or <see cref="T:KMNeedyModule"/>. Reassigning them will replace their values.
+            Assigns events specified into <see cref="P:KeepCoding.ModuleScript.Module"/>. Reassigning them will replace their values.
             </summary>
             <remarks>
             An event that is null will be skipped. This extension method simplifies all of the KMFramework events into Actions or Functions.
             </remarks>
-            <exception cref="T:UnityEngine.MissingComponentException"></exception>
-            <param name="onActivate">Called when the bomb has been activated and the timer has started.</param>
-            <param name="onNeedyActivation">Called when the needy timer activates.</param>
-            <param name="onNeedyDeactivation">Called when the needy gets solved or the bomb explodes.</param>
-            <param name="onTimerExpired">Called when the timer of the needy runs out.</param>
+            <param name="onActivate">Called when the lights turn on.</param>
+            <param name="onNeedyActivation">Called when the needy activates.</param>
+            <param name="onNeedyDeactivation">Called when the needy deactivates.</param>
+            <param name="onPass">Called when the needy is solved.</param>
+            <param name="onStrike">Called when the needy strikes.</param>
+            <param name="onTimerExpired">Called when the timer runs out of time.</param>
         </member>
         <member name="M:KeepCoding.ModuleScript.ButtonEffect(KMSelectable,System.Single,KeepCoding.Sound[])">
             <summary>
@@ -4901,12 +5251,6 @@
             <param name="selectable">The selectable, which is used as a source for sound and bomb shake.</param>
             <param name="intensityModifier">The intensity of the bomb shaking.</param>
             <param name="sounds">The sounds, these can either be <see cref="T:System.String"/>, <see cref="T:UnityEngine.AudioClip"/>, or <see cref="T:KMSoundOverride.SoundEffect"/>.</param>
-        </member>
-        <member name="M:KeepCoding.ModuleScript.Dump(System.Boolean)">
-            <summary>
-            Dumps all information that it can find of the module using reflection. This should only be used to debug.
-            </summary>
-            <param name="getVariables">Whether it should search recursively for the elements within the elements.</param>
         </member>
         <member name="M:KeepCoding.ModuleScript.Dump(System.Boolean,System.Linq.Expressions.Expression{System.Func{System.Object}}[])">
             <summary>
@@ -4920,18 +5264,6 @@
             Dumps all information about the variables specified. Each element uses the syntax () => varName. This should only be used to debug.
             </summary>
             <param name="logs">All of the variables to throughly log.</param>
-        </member>
-        <member name="M:KeepCoding.ModuleScript.Solve(System.String[])">
-            <summary>
-            Solves the module, and logs all of the parameters.
-            </summary>
-            <param name="logs">All of the entries to log.</param>
-        </member>
-        <member name="M:KeepCoding.ModuleScript.Strike(System.String[])">
-            <summary>
-            Strikes the module, and logs all of the parameters.
-            </summary>
-            <param name="logs">All of the entries to log.</param>
         </member>
         <member name="M:KeepCoding.ModuleScript.Log``1(``0,UnityEngine.LogType)">
             <summary>
@@ -4948,6 +5280,24 @@
             <exception cref="T:KeepCoding.UnrecognizedValueException"></exception>
             <param name="message">The message to log.</param>
             <param name="args">All of the arguments to embed into <paramref name="message"/>.</param>
+        </member>
+        <member name="M:KeepCoding.ModuleScript.LogMultiple(System.String[]@)">
+            <summary>
+            Logs multiple entries to the console.
+            </summary>
+            <param name="logs">The array of logs to individual output into the console.</param>
+        </member>
+        <member name="M:KeepCoding.ModuleScript.Solve(System.String[])">
+            <summary>
+            Solves the module, and logs all of the parameters.
+            </summary>
+            <param name="logs">All of the entries to log.</param>
+        </member>
+        <member name="M:KeepCoding.ModuleScript.Strike(System.String[])">
+            <summary>
+            Strikes the module, and logs all of the parameters.
+            </summary>
+            <param name="logs">All of the entries to log.</param>
         </member>
         <member name="M:KeepCoding.ModuleScript.OnActivate">
             <summary>
@@ -5568,6 +5918,16 @@
             The current language code.
             </value>
         </member>
+        <member name="P:KeepCoding.Game.AddStrikes">
+            <value>
+            Adds an amount of strikes on the bomb.
+            </value>
+        </member>
+        <member name="P:KeepCoding.Game.SetStrikes">
+            <value>
+            Sets an amount of strikes on the bomb.
+            </value>
+        </member>
         <member name="P:KeepCoding.Game.Bomb">
             <value>
             Gets the game's internal bomb component, not to be mistaken with <see cref="T:KMBomb"/>.
@@ -5576,19 +5936,31 @@
             To prevent a reference to the game, the type is boxed in <see cref="T:System.Object"/>. You can cast it to Bomb or <see cref="T:UnityEngine.MonoBehaviour"/> type to restore its functionality.
             </remarks>
         </member>
+        <member name="P:KeepCoding.Game.Timer">
+            <value>
+            Gets the game's internal timer component.
+            </value>
+            <remarks>
+            To prevent a reference to the game, the type is boxed in <see cref="T:System.Object"/>. You can cast it to TimerComponent or <see cref="T:UnityEngine.MonoBehaviour"/> type to restore its functionality.
+            </remarks>
+        </member>
         <member name="T:KeepCoding.PathManager">
             <summary>
             Allows loading external information stored on the module. Do not use this code on the Editor. Written by Emik.
             </summary>
         </member>
+        <member name="P:KeepCoding.PathManager.AssemblyName">
+            <value>
+            Gets this library's <see cref="P:KeepCoding.PathManager.AssemblyName"/>.
+            </value>
+        </member>
         <member name="P:KeepCoding.PathManager.Version">
-            <summary>
-            Gets the current library's version number. Currently used by <see cref="T:KeepCoding.ModuleScript"/> to log the version number of this library.
-            </summary>
+            <value>
+            Gets this library's version number. Currently used by <see cref="T:KeepCoding.ModuleScript"/> to log the version number of this library.
+            </value>
             <remarks>
             If you want the version number of your modules, refer to <see cref="P:KeepCoding.ModuleScript.Version"/> instead, or <see cref="M:KeepCoding.PathManager.GetModInfo``1(``0)"/>.
             </remarks>
-            <returns>The version of this library.</returns>
         </member>
         <member name="M:KeepCoding.PathManager.PrintHierarchy(System.UInt16)">
             <summary>
@@ -5660,11 +6032,14 @@
             <summary>
             Finds the path of a given file within each mod.
             </summary>
+            <remarks>
+            You need to specify the extensions of the file too, otherwise the file cannot be found.
+            </remarks>
             <exception cref="T:KeepCoding.EmptyIteratorException"></exception>
             <exception cref="T:System.IO.FileNotFoundException"></exception>
             <exception cref="T:KeepCoding.NullIteratorException"></exception>
-            <param name="fileName">The file name to search for.</param>
-            <returns>The path to <paramref name="fileName"/>.</returns>
+            <param name="search">The file to search for. Make sure to include extensions!</param>
+            <returns>The path to <paramref name="search"/>.</returns>
         </member>
         <member name="M:KeepCoding.PathManager.GetPath(System.Type)">
             <summary>
