@@ -9,6 +9,19 @@
             Abstract class for the <see cref="T:KeepCoding.Routine"/> datatype, since the different overloads are similar to each other. Written by Emik.
             </summary>
         </member>
+        <member name="M:KeepCoding.RoutineBase.#ctor(UnityEngine.MonoBehaviour)">
+            <summary>
+            Creates a list of coroutines so that you can start, restart, or stop any coroutine running inside this class.
+            </summary>
+            <param name="monoBehaviour">The MonoBehaviour to reference when calling the method.</param>
+        </member>
+        <member name="P:KeepCoding.RoutineBase.Item(System.Int32)">
+            <summary>
+            Indexes into <see cref="P:KeepCoding.RoutineBase.Coroutines"/>.
+            </summary>
+            <param name="index">The index to index into <see cref="P:KeepCoding.RoutineBase.Coroutines"/>.</param>
+            <returns>The <see cref="T:UnityEngine.Coroutine"/> from <see cref="P:KeepCoding.RoutineBase.Coroutines"/>.</returns>
+        </member>
         <member name="P:KeepCoding.RoutineBase.IsRunning">
             <value>
             Determines whether it is currently running any coroutines.
@@ -24,11 +37,6 @@
             The list of all coroutines currently running.
             </value>
         </member>
-        <member name="P:KeepCoding.RoutineBase.MonoBehaviour">
-            <value>
-            The MonoBehaviour that is being used to start the coroutines.
-            </value>
-        </member>
         <member name="M:KeepCoding.RoutineBase.Stop">
             <summary>
             Stops the first coroutine that was called, and removes it from the list of coroutines.
@@ -41,54 +49,61 @@
             </summary>
             <exception cref="T:KeepCoding.EmptyIteratorException"></exception>
         </member>
-        <member name="T:KeepCoding.Tuple">
+        <member name="M:KeepCoding.RoutineBase.GetEnumerator">
+            <summary>
+            Gets the enumerator of the <see cref="T:KeepCoding.Routine"/>, using <see cref="P:KeepCoding.RoutineBase.Coroutines"/>.
+            </summary>
+            <returns>The list of <see cref="P:KeepCoding.RoutineBase.Coroutines"/> in this <see cref="T:KeepCoding.Routine"/>.</returns>
+        </member>
+        <member name="T:KeepCoding.TupleBase">
             <summary>
             An abstract type meant for the tuple data type for C# 4. Written by Emik.
             </summary>
         </member>
-        <member name="P:KeepCoding.Tuple.Item(System.Byte)">
+        <member name="P:KeepCoding.TupleBase.Item(System.Byte)">
             <summary>
             Indexable tuple. Be careful when using this as the compiler will not notice if you are using the wrong type.
             </summary>
             <exception cref="T:System.IndexOutOfRangeException"></exception>
             <exception cref="T:KeepCoding.WrongDatatypeException"></exception>
-            <param name="i">The index to use.</param>
+            <param name="index">The index to use.</param>
             <returns>The item indexed into.</returns>
         </member>
-        <member name="P:KeepCoding.Tuple.IsEmpty">
+        <member name="P:KeepCoding.TupleBase.IsEmpty">
             <value>
             Determines if the tuple data type is empty.
             </value>
         </member>
-        <member name="P:KeepCoding.Tuple.Length">
+        <member name="P:KeepCoding.TupleBase.Length">
             <value>
             Gets the length of the tuple, describing the amount of elements there are.
             </value>
         </member>
-        <member name="P:KeepCoding.Tuple.UpperBound">
+        <member name="P:KeepCoding.TupleBase.UpperBound">
             <value>
             Gets the upper bound of the tuple, which is the last index.
             </value>
             <exception cref="T:System.InvalidOperationException"></exception>
         </member>
-        <member name="P:KeepCoding.Tuple.ToArray">
+        <member name="P:KeepCoding.TupleBase.ToArray">
             <value>
             All of the tuple's items as an array, ordered by item number.
             </value>
+        </member>
+        <member name="M:KeepCoding.TupleBase.GetEnumerator">
+            <summary>
+            Gets the enumerator of the tuple, using <see cref="P:KeepCoding.TupleBase.ToArray"/>.
+            </summary>
+            <returns>All of the items in tuple.</returns>
         </member>
         <member name="T:KeepCoding.WorkBase">
             <summary>
             Abstract class for the <see cref="T:KeepCoding.Work"/> datatype, since the different overloads are similar to each other. Written by Emik.
             </summary>
         </member>
-        <member name="M:KeepCoding.WorkBase.Stop">
-            <summary>
-            Interrupts the thread.
-            </summary>
-        </member>
         <member name="P:KeepCoding.WorkBase.IsRunning">
             <value>
-            Determines whether any thread in this class in running.
+            Determines whether any thread in this class is running.
             </value>
         </member>
         <member name="P:KeepCoding.WorkBase.AllowSimultaneousActive">
@@ -105,6 +120,11 @@
             <value>
             The thread of the class.
             </value>
+        </member>
+        <member name="M:KeepCoding.WorkBase.Stop">
+            <summary>
+            Interrupts the thread.
+            </summary>
         </member>
         <member name="M:KeepCoding.WorkBase.WaitForOtherThreads">
             <summary>
@@ -2093,6 +2113,14 @@
             <param name="source">The string to check for null and empty.</param>
             <param name="message">The optional message to throw if null or empty. Leaving it default will throw a default message.</param>
         </member>
+        <member name="M:KeepCoding.Helper.Split(System.String,System.String)">
+            <summary>
+            Splits the <see cref="T:System.String"/> based on the separator.
+            </summary>
+            <param name="source">The <see cref="T:System.String"/> of characters to split by.</param>
+            <param name="separator">The separator to split <paramref name="source"/> by.</param>
+            <returns>An <see cref="T:System.Array"/> where each index is where <paramref name="separator"/> was found in <paramref name="source"/>.</returns>
+        </member>
         <member name="M:KeepCoding.Helper.ToOrdinal(System.Int32)">
             <summary>
             Converts a number to the ordinal as <see cref="T:System.String"/>.
@@ -2116,6 +2144,13 @@
             <param name="source">The object to unwrap.</param>
             <param name="isRecursive">Whether it should search inside the variable and yield return the elements inside <paramref name="source"/>.</param>
             <returns>An <see cref="T:System.Object"/> <see cref="T:System.Array"/> of all elements within <paramref name="source"/>.</returns>
+        </member>
+        <member name="M:KeepCoding.Helper.Suppress(System.Action,System.Type[])">
+            <summary>
+            Suppresses exceptions specified from the method.
+            </summary>
+            <param name="action">The method to try.</param>
+            <param name="exceptionTypes">The exceptions to catch and suppress.</param>
         </member>
         <member name="M:KeepCoding.Helper.Method(UnityEngine.LogType)">
             <summary>
@@ -2146,6 +2181,15 @@
             </summary>
             <param name="item">The item to check the type for.</param>
             <returns><see cref="T:KeepCoding.NullIteratorException"/> if <paramref name="item"/> is an iterator, evaluated with <see cref="M:KeepCoding.Helper.IsIterator``1(``0)"/>, otherwise <see cref="T:System.NullReferenceException"/></returns>
+        </member>
+        <member name="M:KeepCoding.Helper.Suppress``1(System.Func{``0},System.Type[])">
+            <summary>
+            Suppresses exceptions specified from the method.
+            </summary>
+            <typeparam name="T">The return type of the method.</typeparam>
+            <param name="func">The method to try.</param>
+            <param name="exceptionTypes">The exceptions to catch and suppress.</param>
+            <returns>The return of the method, or <see langword="default"/> if an exception is caught from the list of exceptions.</returns>
         </member>
         <member name="M:KeepCoding.Helper.AsEnumerable(System.Collections.IEnumerator)">
             <summary>
@@ -2293,6 +2337,15 @@
             <typeparam name="T">The type of the action.</typeparam>
             <param name="expression">The expression that retrieves the method.</param>
             <returns>The method info of the function.</returns>
+        </member>
+        <member name="M:KeepCoding.Helper.SplitBy``1(System.Collections.Generic.IEnumerable{``0},System.Func{``0,System.Boolean})">
+            <summary>
+            Splits an <see cref="T:System.Collections.IEnumerable"/> in two based on a method provided.
+            </summary>
+            <typeparam name="T">The type of the collection.</typeparam>
+            <param name="source">The collection to split.</param>
+            <param name="func">The method that decides where the item ends up.</param>
+            <returns>A <see cref="T:KeepCoding.Tuple`2"/> consisting of items from <paramref name="source"/> where <see cref="P:KeepCoding.Tuple`1.Item1"/> contains items that returned true in <paramref name="func"/>, and <see cref="P:KeepCoding.Tuple`2.Item2"/> otherwise.</returns>
         </member>
         <member name="M:KeepCoding.Helper.Assert``1(``0,System.String)">
             <summary>
@@ -2838,6 +2891,13 @@
             <param name="w">The w value.</param>
             <returns>A new instance of <paramref name="vector"/>, with the arguments replacing the values.</returns>
         </member>
+        <member name="M:KeepCoding.TypeHelper.ToVersion(System.String)">
+            <summary>
+            Converts argument to a new <see cref="T:System.Version"/>. Major-only versions are compatible.
+            </summary>
+            <param name="s">The string to convert to a version.</param>
+            <returns>A new <see cref="T:System.Version"/> representing the input <paramref name="s"/>.</returns>
+        </member>
         <member name="M:KeepCoding.TypeHelper.ToWork(System.UInt32,System.Action,System.Boolean)">
             <summary>
             Converts argument to a new <see cref="T:KeepCoding.Work"/>
@@ -2912,14 +2972,15 @@
             Creates a big integer with the default value. (0)
             </summary>
         </member>
-        <member name="P:KeepCoding.BigInteger.Item(System.Int32)">
+        <member name="P:KeepCoding.BigInteger.Item(System.Int32,System.Boolean)">
             <summary>
             Indexable number. Allows you to treat the value as an array.
             </summary>
             <exception cref="T:System.IndexOutOfRangeException"></exception>
             <exception cref="T:System.ArgumentOutOfRangeException"></exception>
-            <param name="i">The <paramref name="i"/>th digit to look from. (left-to-right)</param>
-            <returns>The current value's <paramref name="i"/>th digit. (left-to-right)</returns>
+            <param name="index">The <paramref name="index"/>th digit to look from.</param>
+            <param name="isLeftToRight">Determines if the index goes from left-to-right (<see langword="true"/>), or right-to-left (<see langword="false"/>).</param>
+            <returns>The current value's <paramref name="index"/>th digit.</returns>
         </member>
         <member name="P:KeepCoding.BigInteger.IsNegative">
             <value>
@@ -3147,6 +3208,34 @@
             <exception cref="T:KeepCoding.ConstructorArgumentException"></exception>
             <exception cref="T:KeepCoding.UnrecognizedValueException"></exception>
             <returns>True if <paramref name="value"/> is less than or equal <paramref name="bigInteger"/>.</returns>
+        </member>
+        <member name="M:KeepCoding.BigInteger.op_UnaryPlus(KeepCoding.BigInteger)">
+            <summary>
+            Positive operator; returns itself.
+            </summary>
+            <param name="bigInteger">The number.</param>
+            <returns>The number.</returns>
+        </member>
+        <member name="M:KeepCoding.BigInteger.op_UnaryNegation(KeepCoding.BigInteger)">
+            <summary>
+            Negative operator; inverts <see cref="P:KeepCoding.BigInteger.IsNegative"/>.
+            </summary>
+            <param name="bigInteger">The number.</param>
+            <returns>The number, inverting <see cref="P:KeepCoding.BigInteger.IsNegative"/>.</returns>
+        </member>
+        <member name="M:KeepCoding.BigInteger.op_Increment(KeepCoding.BigInteger)">
+            <summary>
+            Addition operator; adds 1.
+            </summary>
+            <param name="bigInteger">The number.</param>
+            <returns>The number + 1.</returns>
+        </member>
+        <member name="M:KeepCoding.BigInteger.op_Decrement(KeepCoding.BigInteger)">
+            <summary>
+            Subtraction operator; subtracts 1.
+            </summary>
+            <param name="bigInteger">The number.</param>
+            <returns>The number - 1.</returns>
         </member>
         <member name="M:KeepCoding.BigInteger.op_Addition(KeepCoding.BigInteger,KeepCoding.BigInteger)">
             <summary>
@@ -3398,7 +3487,7 @@
             <param name="other">The comparison.</param>
             <returns>True if both values are equal.</returns>
         </member>
-        <member name="M:KeepCoding.BigInteger.IsInRange(KeepCoding.BigInteger,KeepCoding.BigInteger)">
+        <member name="M:KeepCoding.BigInteger.IsBetween(KeepCoding.BigInteger,KeepCoding.BigInteger)">
             <summary>
             Determines if it is between 2 other <see cref="T:KeepCoding.BigInteger"/> variables. Equality will count as true.
             </summary>
@@ -3406,7 +3495,7 @@
             <param name="max">The maximum value accepted.</param>
             <returns>True if <paramref name="min"/> is smaller or equal itself and <paramref name="max"/> is greater or equal itself.</returns>
         </member>
-        <member name="M:KeepCoding.BigInteger.IsInRange``1(``0,``0)">
+        <member name="M:KeepCoding.BigInteger.IsBetween``1(``0,``0)">
             <summary>
             Determines if it is between 2 other variables. Equality will count as true.
             </summary>
@@ -3452,6 +3541,13 @@
             </summary>
             <returns>A deep clone of itself.</returns>
         </member>
+        <member name="M:KeepCoding.BigInteger.Clone(KeepCoding.BigInteger)">
+            <summary>
+            Makes a new instance/deep clone of <see cref="T:KeepCoding.BigInteger"/> with the same value.
+            </summary>
+            <param name="bigInteger">The <see cref="T:KeepCoding.BigInteger"/> to clone.</param>
+            <returns>A deep clone of itself.</returns>
+        </member>
         <member name="M:KeepCoding.BigInteger.Modulo(KeepCoding.BigInteger)">
             <summary>
             Calculates the rem-euclid modulo, which allows negative numbers to be properly calculated.
@@ -3471,6 +3567,12 @@
             <exception cref="T:KeepCoding.UnrecognizedValueException"></exception>
             <param name="obj">The right-hand side operator.</param>
             <returns>Itself mod <paramref name="obj"/>.</returns>
+        </member>
+        <member name="M:KeepCoding.BigInteger.GetEnumerator">
+            <summary>
+            Gets the enumerator of the <see cref="T:KeepCoding.BigInteger"/>, using <see cref="P:KeepCoding.BigInteger.Value"/>.
+            </summary>
+            <returns>The current number of this <see cref="T:KeepCoding.BigInteger"/>.</returns>
         </member>
         <member name="T:KeepCoding.ComponentPool">
             <summary>
@@ -3776,19 +3878,6 @@
             </summary>
             <param name="logs">All of the variables to throughly log.</param>
         </member>
-        <member name="M:KeepCoding.Logger.Equals(System.Object)">
-            <summary>
-            Determines if both objects are equal.
-            </summary>
-            <param name="obj">The comparison.</param>
-            <returns>Whether both objects are equal.</returns>
-        </member>
-        <member name="M:KeepCoding.Logger.GetHashCode">
-            <summary>
-            Gets the hash code of the object.
-            </summary>
-            <returns>The hash code.</returns>
-        </member>
         <member name="M:KeepCoding.Logger.Log``1(``0,UnityEngine.LogType)">
             <summary>
             Logs message, but formats it to be compliant with the Logfile Analyzer.
@@ -3811,20 +3900,23 @@
             </summary>
             <param name="logs">The array of logs to individual output into the console.</param>
         </member>
+        <member name="M:KeepCoding.Logger.Equals(System.Object)">
+            <summary>
+            Determines if both objects are equal.
+            </summary>
+            <param name="obj">The comparison.</param>
+            <returns>Whether both objects are equal.</returns>
+        </member>
+        <member name="M:KeepCoding.Logger.GetHashCode">
+            <summary>
+            Gets the hash code of the object.
+            </summary>
+            <returns>The hash code.</returns>
+        </member>
         <member name="T:KeepCoding.ModInfo">
             <summary>
             Contains information about the mod's info, this class can be used to deserialize every mod's "modInfo.json".
             </summary>
-        </member>
-        <member name="P:KeepCoding.ModInfo.Id">
-            <value>
-            Contains the ID of the mod, not to be mistaken with <see cref="P:KeepCoding.ModuleScript.Id"/>.
-            </value>
-        </member>
-        <member name="P:KeepCoding.ModInfo.Title">
-            <value>
-            Contains the title of the mod.
-            </value>
         </member>
         <member name="P:KeepCoding.ModInfo.Author">
             <value>
@@ -3836,9 +3928,14 @@
             Contains the description of the mod.
             </value>
         </member>
-        <member name="P:KeepCoding.ModInfo.Version">
+        <member name="P:KeepCoding.ModInfo.Id">
             <value>
-            Contains the current version of the mod.
+            Contains the ID of the mod, not to be mistaken with <see cref="P:KeepCoding.ModuleScript.Id"/>.
+            </value>
+        </member>
+        <member name="P:KeepCoding.ModInfo.Title">
+            <value>
+            Contains the title of the mod.
             </value>
         </member>
         <member name="P:KeepCoding.ModInfo.UnityVersion">
@@ -3846,10 +3943,34 @@
             Contains the current unity version of the mod.
             </summary>
         </member>
+        <member name="P:KeepCoding.ModInfo.Version">
+            <value>
+            Contains the current version of the mod.
+            </value>
+        </member>
         <member name="P:KeepCoding.ModInfo.Values">
             <value>
             Returns the current values of this <see cref="T:KeepCoding.ModInfo"/> as a dictionary, where the key is the variable name and the value is the variable value.
             </value>
+        </member>
+        <member name="M:KeepCoding.ModInfo.Equals(System.Object)">
+            <summary>
+            Determines if both objects are equal.
+            </summary>
+            <param name="obj">The comparison.</param>
+            <returns>True if both of them are <see cref="T:KeepCoding.ModInfo"/> and contain the same <see cref="P:KeepCoding.ModInfo.Values"/>.</returns>
+        </member>
+        <member name="M:KeepCoding.ModInfo.GetHashCode">
+            <summary>
+            Gets the hash code.
+            </summary>
+            <returns>The hash code.</returns>
+        </member>
+        <member name="M:KeepCoding.ModInfo.ToString">
+            <summary>
+            Converts the object to a string.
+            </summary>
+            <returns><see cref="P:KeepCoding.ModInfo.Values"/> unwrapped with <see cref="M:KeepCoding.Helper.UnwrapToString``1(``0,System.Boolean,System.String)"/>.</returns>
         </member>
         <member name="M:KeepCoding.ModInfo.Deserialize(System.String)">
             <summary>
@@ -4356,6 +4477,13 @@
             Converts the current sound to a string, returning the current sound.
             </summary>
             <returns><see cref="P:KeepCoding.Sound.Game"/>, or if null, <see cref="P:KeepCoding.Sound.Custom"/>.</returns>
+        </member>
+        <member name="M:KeepCoding.Sound.Method(KMAudio)">
+            <summary>
+            Gets the corresponding sound method matching the arguments of this instance of <see cref="T:KeepCoding.Sound"/>.
+            </summary>
+            <param name="audio">The instance of <see cref="T:KMAudio"/> to play from.</param>
+            <returns>A method that when called, will play the sound and return the <see cref="T:KMAudio.KMAudioRef"/> instance.</returns>
         </member>
         <member name="T:KeepCoding.Tuple`1">
             <summary>
@@ -4906,7 +5034,7 @@
             These values are set by the Twitch Plays mod using reflection. This field is set in <c>Start()</c>, therefore there's no guarantee that it'll be available there, the field must be first accessed in a delegate in <see cref="F:KMBombModule.OnActivate"/> or <see cref="F:KMNeedyModule.OnActivate"/> or later.
             </remarks>
         </member>
-        <member name="P:KeepCoding.ITP.IsTimeMode">
+        <member name="P:KeepCoding.ITP.IsTime">
             <value>
             Determines if it is in Time Mode, where solves change the timer. This is useful for modules that use the timer's value.
             </value>
@@ -4922,7 +5050,7 @@
             These values are set by the Twitch Plays mod using reflection. This field is set in <c>Start()</c>, therefore there's no guarantee that it'll be available there, the field must be first accessed in a delegate in <see cref="F:KMBombModule.OnActivate"/> or <see cref="F:KMNeedyModule.OnActivate"/> or later.
             </remarks>
         </member>
-        <member name="P:KeepCoding.ITP.IsZenMode">
+        <member name="P:KeepCoding.ITP.IsZen">
             <value>
             Determines if the timer is counting up instead of down, for special cases, such as controlling how to sort button release times, or whether there is a low timer event or not.
             </value>
@@ -4930,7 +5058,17 @@
             These values are set by the Twitch Plays mod using reflection. This field is set in <c>Start()</c>, therefore there's no guarantee that it'll be available there, the field must be first accessed in a delegate in <see cref="F:KMBombModule.OnActivate"/> or <see cref="F:KMNeedyModule.OnActivate"/> or later.
             </remarks>
         </member>
-        <member name="P:KeepCoding.ITP.AbandonModule">
+        <member name="P:KeepCoding.ITP.Help">
+            <value>
+            The help message that gets sent when typing <c>!{id} help</c>.
+            </value>
+        </member>
+        <member name="P:KeepCoding.ITP.Manual">
+            <value>
+            Specifies the manual that is looked up on The Manual Repository when <c>!{id} manual</c> is entered into chat.
+            </value>
+        </member>
+        <member name="P:KeepCoding.ITP.Abandons">
             <value>
             Declaring this field allows for Twitch Plays to inform the module that the bomb is in Time Mode, where solves change the timer. This is useful for modules that use the timer's value.
             </value>
@@ -4968,7 +5106,7 @@
             </summary>
             <exception cref="T:System.IndexOutOfRangeException"></exception>
             <exception cref="T:KeepCoding.WrongDatatypeException"></exception>
-            <param name="i">The index to use.</param>
+            <param name="index">The index to use.</param>
             <returns>The item indexed into.</returns>
         </member>
         <member name="P:KeepCoding.ITuple.IsEmpty">
@@ -5198,16 +5336,6 @@
             <exception cref="T:System.OperationCanceledException"></exception>
             <exception cref="T:System.IO.FileNotFoundException"></exception>
         </member>
-        <member name="P:KeepCoding.ModuleScript.Sounds">
-            <value>
-            Contains an instance for every <see cref="T:KeepCoding.Sound"/> played by this module using <see cref="M:KeepCoding.ModuleScript.PlaySound(UnityEngine.Transform,System.Boolean,KeepCoding.Sound[])"/> or any of its overloads.
-            </value>
-        </member>
-        <member name="P:KeepCoding.ModuleScript.Module">
-            <value>
-            Contains either <see cref="T:KMBombModule"/> or <see cref="T:KMNeedyModule"/>, and allows for running commands through context.
-            </value>
-        </member>
         <member name="P:KeepCoding.ModuleScript.TP">
             <value>
             Gets the Twitch Plays <see cref="T:UnityEngine.Component"/> attached to this <see cref="T:UnityEngine.GameObject"/>.
@@ -5215,6 +5343,26 @@
             <remarks>
             Due to type ambiguity, a non-generic interface is returned.
             </remarks>
+        </member>
+        <member name="P:KeepCoding.ModuleScript.Bomb">
+            <value>
+            The bomb that this module is in.
+            </value>
+        </member>
+        <member name="P:KeepCoding.ModuleScript.Module">
+            <value>
+            Contains either <see cref="T:KMBombModule"/> or <see cref="T:KMNeedyModule"/>, and allows for running commands through context.
+            </value>
+        </member>
+        <member name="P:KeepCoding.ModuleScript.Sounds">
+            <value>
+            Contains an instance for every <see cref="T:KeepCoding.Sound"/> played by this module using <see cref="M:KeepCoding.ModuleScript.PlaySound(UnityEngine.Transform,System.Boolean,KeepCoding.Sound[])"/> or any of its overloads.
+            </value>
+        </member>
+        <member name="P:KeepCoding.ModuleScript.Modules">
+            <summary>
+            Contains every modded module in <see cref="P:KeepCoding.ModuleScript.Bomb"/>, separated by type.
+            </summary>
         </member>
         <member name="M:KeepCoding.ModuleScript.Awake">
             <summary>
@@ -5308,19 +5456,28 @@
             <summary>
             Called when any module on the current bomb has issued a strike.
             </summary>
-            <param name="moduleId">The sender's module id, which caused a strike.</param>
+            <remarks>
+            Vanilla modules are an exception, they will not invoke this method.
+            </remarks>
+            <param name="moduleName">The sender's module name, which caused a strike.</param>
         </member>
         <member name="M:KeepCoding.ModuleScript.OnNeedySolved(System.String)">
             <summary>
             Called when any <see cref="T:KMNeedyModule"/> on the current bomb has been solved.
             </summary>
-            <param name="moduleId">The sender's module id, which was solved.</param>
+            <remarks>
+            Vanilla modules are an exception, they will not invoke this method.
+            </remarks>
+            <param name="moduleName">The sender's module name, which was solved.</param>
         </member>
         <member name="M:KeepCoding.ModuleScript.OnSolvableSolved(System.String)">
             <summary>
             Called when any <see cref="T:KMBombModule"/> on the current bomb has been solved.
             </summary>
-            <param name="moduleId">The sender's module id, which was solved.</param>
+            <remarks>
+            Vanilla modules are an exception, they will not invoke this method.
+            </remarks>
+            <param name="moduleName">The sender's module name, which was solved.</param>
         </member>
         <member name="M:KeepCoding.ModuleScript.OnTimerTick">
             <summary>
@@ -5434,11 +5591,6 @@
             Base class for TwitchPlays support for solvable and needy modded modules in Keep Talking and Nobody Explodes. Written by Emik.
             </summary>
         </member>
-        <member name="F:KeepCoding.TPScript`1.TwitchHelpMessage">
-            <summary>
-            The help message that gets sent when typing <c>!{0} help</c>.
-            </summary>
-        </member>
         <member name="P:KeepCoding.TPScript`1.IsTimeSkippable">
             <value>
             Determines if it should allow for the timer to be skipped when the module it is in, as well as any other modules that would like to skip time, are the only unsolved modules left on the bomb. 
@@ -5455,7 +5607,7 @@
             These values are set by the Twitch Plays mod using reflection. This field is set in <c>Start()</c>, therefore there's no guarantee that it'll be available there, the field must be first accessed in a delegate in <see cref="F:KMBombModule.OnActivate"/> or <see cref="F:KMNeedyModule.OnActivate"/> or later.
             </remarks>
         </member>
-        <member name="P:KeepCoding.TPScript`1.IsTimeMode">
+        <member name="P:KeepCoding.TPScript`1.IsTime">
             <value>
             Determines if it is in Time Mode, where solves change the timer. This is useful for modules that use the timer's value.
             </value>
@@ -5471,7 +5623,7 @@
             These values are set by the Twitch Plays mod using reflection. This field is set in <c>Start()</c>, therefore there's no guarantee that it'll be available there, the field must be first accessed in a delegate in <see cref="F:KMBombModule.OnActivate"/> or <see cref="F:KMNeedyModule.OnActivate"/> or later.
             </remarks>
         </member>
-        <member name="P:KeepCoding.TPScript`1.IsZenMode">
+        <member name="P:KeepCoding.TPScript`1.IsZen">
             <value>
             Determines if the timer is counting up instead of down, for special cases, such as controlling how to sort button release times, or whether there is a low timer event or not.
             </value>
@@ -5479,7 +5631,17 @@
             These values are set by the Twitch Plays mod using reflection. This field is set in <c>Start()</c>, therefore there's no guarantee that it'll be available there, the field must be first accessed in a delegate in <see cref="F:KMBombModule.OnActivate"/> or <see cref="F:KMNeedyModule.OnActivate"/> or later.
             </remarks>
         </member>
-        <member name="P:KeepCoding.TPScript`1.AbandonModule">
+        <member name="P:KeepCoding.TPScript`1.Help">
+            <value>
+            The help message that gets sent when typing <c>!{id} help</c>.
+            </value>
+        </member>
+        <member name="P:KeepCoding.TPScript`1.Manual">
+            <value>
+            Specifies the manual that is looked up on The Manual Repository when <c>!{id} manual</c> is entered into chat.
+            </value>
+        </member>
+        <member name="P:KeepCoding.TPScript`1.Abandons">
             <value>
             This list contains modules that it should stop processing. Currently, the only module that uses this capability is Souvenir.
             </value>
@@ -5687,7 +5849,7 @@
             Allows access into the game's internal code. Written by Emik.
             </summary>
             <remarks>
-            You should avoid calling this class from the Editor as it uses the game assembly as a dependancy.
+            On the Editor, these properties will return default values. Check the XML documentation to see the value it returns.
             </remarks>
         </member>
         <member name="T:KeepCoding.Game.ControlType">
@@ -5745,29 +5907,6 @@
             The mod is stored within the workshop folder.
             </value>
         </member>
-        <member name="T:KeepCoding.Game.IRCConnection">
-            <summary>
-            Allows access into Twitch Plays messaging system.
-            </summary>
-        </member>
-        <member name="P:KeepCoding.Game.IRCConnection.SendMessage">
-            <value>
-            Sends a message to the chat.
-            </value>
-            <remarks>Arguments: <c>message</c>.</remarks>
-        </member>
-        <member name="P:KeepCoding.Game.IRCConnection.SendMessageFormat">
-            <value>
-            Sends a message to the chat.
-            </value>
-            <remarks>Arguments: <c>message</c> and <c>args</c>.</remarks>
-        </member>
-        <member name="P:KeepCoding.Game.IRCConnection.SendWhisper">
-            <value>
-            Whispers a message to a person.
-            </value>
-            <remarks>Arguments: <c>userNickName</c>, <c>message</c>, and <c>args</c>.</remarks>
-        </member>
         <member name="T:KeepCoding.Game.KTInputManager">
             <summary>
             Allows access relating to how the game is being interacted with.
@@ -5777,11 +5916,17 @@
             <value>
             Determines if the current way the game is being controlled is VR-related.
             </value>
+            <remarks>
+            Default: <see langword="false"/>.
+            </remarks>
         </member>
         <member name="P:KeepCoding.Game.KTInputManager.CurrentControlType">
             <value>
             The current way the game is being controlled.
             </value>
+            <remarks>
+            Default: <see cref="F:KeepCoding.Game.ControlType.Mouse"/>.
+            </remarks>
         </member>
         <member name="T:KeepCoding.Game.Mission">
             <summary>
@@ -5790,28 +5935,43 @@
         </member>
         <member name="P:KeepCoding.Game.Mission.IsPacingEvents">
             <value>
-            Determines whether or not all pacing events are enabled.
+            Determines whether or not all pacing events are enabled. Default: <see langword="false"/>.
             </value>
+            <remarks>
+            Default: <see langword="false"/>.
+            </remarks>
         </member>
         <member name="P:KeepCoding.Game.Mission.Description">
             <value>
             The description as it appears in the bomb binder.
             </value>
+            <remarks>
+            Default: "Everybody has to start somewhere. Let's just hope it doesn't end here too.\n\nMake sure your experts have the manual and are ready to help.".
+            </remarks>
         </member>
         <member name="P:KeepCoding.Game.Mission.DisplayName">
             <value>
             The mission name as it appears in the bomb binder.
             </value>
+            <remarks>
+            Default: "The First Bomb"
+            </remarks>
         </member>
         <member name="P:KeepCoding.Game.Mission.ID">
             <value>
             The ID of the mission.
             </value>
+            <remarks>
+            Default: "firsttime"
+            </remarks>
         </member>
         <member name="P:KeepCoding.Game.Mission.GeneratorSetting">
             <value>
             Gets the generator setting of the mission.
             </value>
+            <remarks>
+            New instance of <see cref="P:KeepCoding.Game.Mission.GeneratorSetting"/>, default constructor.
+            </remarks>
         </member>
         <member name="T:KeepCoding.Game.ModManager">
             <summary>
@@ -5822,16 +5982,25 @@
             <value>
             Gets all of the disabled mod paths.
             </value>
+            <remarks>
+            New instance of <see cref="T:System.Collections.Generic.List`1"/>, with no elements.
+            </remarks>
         </member>
         <member name="P:KeepCoding.Game.ModManager.GetAllModPathsFromSource">
             <value>
             Gets all of the mod paths within the <see cref="T:KeepCoding.Game.ModSourceEnum"/> constraint.
             </value>
+            <remarks>
+            New instance of <see cref="T:System.Collections.Generic.List`1"/>, with no elements.
+            </remarks>
         </member>
         <member name="P:KeepCoding.Game.ModManager.GetEnabledModPaths">
             <value>
             Gets all of the enabled mod paths within the <see cref="T:KeepCoding.Game.ModSourceEnum"/> constraint.
             </value>
+            <remarks>
+            New instance of <see cref="T:System.Collections.Generic.List`1"/>, with no elements.
+            </remarks>
         </member>
         <member name="T:KeepCoding.Game.PlayerSettings">
             <summary>
@@ -5842,51 +6011,81 @@
             <value>
             Determines if vertical tilting is flipped or not.
             </value>
+            <remarks>
+            Default: <see langword="false"/>.
+            </remarks>
         </member>
         <member name="P:KeepCoding.Game.PlayerSettings.LockMouseToWindow">
             <value>
             Determines if the option to lock the mouse to the window is enabled.
             </value>
+            <remarks>
+            Default: <see langword="false"/>.
+            </remarks>
         </member>
         <member name="P:KeepCoding.Game.PlayerSettings.ShowLeaderBoards">
             <value>
             Determines if the option to show the leaderboards from the pamphlet.
             </value>
+            <remarks>
+            Default: <see langword="true"/>.
+            </remarks>
         </member>
         <member name="P:KeepCoding.Game.PlayerSettings.ShowRotationUI">
             <value>
             Determines if the option to show the rotation of the User Interface is enabled.
             </value>
+            <remarks>
+            Default: <see langword="true"/>.
+            </remarks>
         </member>
         <member name="P:KeepCoding.Game.PlayerSettings.ShowScanline">
             <value>
             Determines if the option to show scanlines is enabled.
             </value>
+            <remarks>
+            Default: <see langword="true"/>.
+            </remarks>
         </member>
         <member name="P:KeepCoding.Game.PlayerSettings.SkipTitleScreen">
             <value>
             Determines if the option to skip the title screen is enabled.
             </value>
+            <remarks>
+            Default: <see langword="false"/>.
+            </remarks>
         </member>
         <member name="P:KeepCoding.Game.PlayerSettings.RumbleEnabled">
             <value>
             Determines if the VR or regular controllers vibrate.
             </value>
+            <remarks>
+            Default: <see langword="true"/>.
+            </remarks>
         </member>
         <member name="P:KeepCoding.Game.PlayerSettings.TouchpadInvert">
             <value>
             Determines if the touchpad controls are inverted.
             </value>
+            <remarks>
+            Default: <see langword="false"/>.
+            </remarks>
         </member>
         <member name="P:KeepCoding.Game.PlayerSettings.UseModsAlways">
             <value>
             Determines if the option to always use mods is enabled.
             </value>
+            <remarks>
+            Default: <see langword="false"/>.
+            </remarks>
         </member>
         <member name="P:KeepCoding.Game.PlayerSettings.UseParallelModLoading">
             <value>
             Determines if the option to use parallel/simultaneous mod loading is enabled.
             </value>
+            <remarks>
+            Default: <see langword="false"/>.
+            </remarks>
         </member>
         <member name="P:KeepCoding.Game.PlayerSettings.VRModeRequested">
             <value>
@@ -5897,56 +6096,85 @@
             <value>
             The intensity of anti-aliasing currently on the game. Ranges 0 to 8.
             </value>
+            <remarks>
+            Default: 8.
+            </remarks>
         </member>
         <member name="P:KeepCoding.Game.PlayerSettings.MusicVolume">
             <value>
             The current music volume from the dossier menu. Ranges 0 to 100.
             </value>
+            <remarks>
+            Default: 100.
+            </remarks>
         </member>
         <member name="P:KeepCoding.Game.PlayerSettings.SFXVolume">
             <value>
             The current sound effects volume from the dosssier menu. Ranges 0 to 100.
             </value>
+            <remarks>
+            Default: 100.
+            </remarks>
         </member>
         <member name="P:KeepCoding.Game.PlayerSettings.VSync">
             <value>
             Determines if VSync is on or off.
             </value>
+            <remarks>
+            Default: 1.
+            </remarks>
         </member>
         <member name="P:KeepCoding.Game.PlayerSettings.LanguageCode">
             <value>
             The current language code.
             </value>
+            <remarks>
+            Default: "en".
+            </remarks>
         </member>
         <member name="P:KeepCoding.Game.AddStrikes">
             <value>
             Adds an amount of strikes on the bomb.
             </value>
+            <remarks>
+            Default: Internal Logger method call.
+            </remarks>
         </member>
         <member name="P:KeepCoding.Game.SetStrikes">
             <value>
             Sets an amount of strikes on the bomb.
             </value>
+            <remarks>
+            Default: Internal Logger method call.
+            </remarks>
         </member>
         <member name="P:KeepCoding.Game.Bomb">
             <value>
-            Gets the game's internal bomb component, not to be mistaken with <see cref="T:KMBomb"/>.
+            Gets the game's internal bomb component, not to be mistaken with <see cref="T:KMBomb"/>. To prevent a reference to the game, the type is boxed in <see cref="T:System.Object"/>. You can cast it to Bomb or <see cref="T:UnityEngine.MonoBehaviour"/> type to restore its functionality.
             </value>
             <remarks>
-            To prevent a reference to the game, the type is boxed in <see cref="T:System.Object"/>. You can cast it to Bomb or <see cref="T:UnityEngine.MonoBehaviour"/> type to restore its functionality.
+            Default: <see langword="null"/>.
             </remarks>
         </member>
         <member name="P:KeepCoding.Game.Timer">
             <value>
-            Gets the game's internal timer component.
+            Gets the game's internal timer component. To prevent a reference to the game, the type is boxed in <see cref="T:System.Object"/>. You can cast it to TimerComponent or <see cref="T:UnityEngine.MonoBehaviour"/> type to restore its functionality.
             </value>
             <remarks>
-            To prevent a reference to the game, the type is boxed in <see cref="T:System.Object"/>. You can cast it to TimerComponent or <see cref="T:UnityEngine.MonoBehaviour"/> type to restore its functionality.
+            Default: <see langword="null"/>.
+            </remarks>
+        </member>
+        <member name="P:KeepCoding.Game.Vanillas">
+            <value>
+            Gets all of the vanilla modules from the bomb supplied, including needies. To prevent a reference to the game, the type is boxed in an <see cref="T:System.Object"/> <see cref="T:System.Array"/>. You can cast it to BombComponent type to restore its functionality.
+            </value>
+            <remarks>
+            Default: An empty <see cref="T:System.Object"/> <see cref="T:System.Array"/>.
             </remarks>
         </member>
         <member name="T:KeepCoding.PathManager">
             <summary>
-            Allows loading external information stored on the module. Do not use this code on the Editor. Written by Emik.
+            Allows loading external information stored on the module. Written by Emik.
             </summary>
         </member>
         <member name="P:KeepCoding.PathManager.AssemblyName">
@@ -5976,12 +6204,12 @@
             <param name="indentation">The amount of spaces used for indenting children of game objects.</param>
             <param name="depth">The level of depth which determines level of indentation. Leave this variable as 0.</param>
         </member>
-        <member name="M:KeepCoding.PathManager.NameOfAssembly``1">
+        <member name="M:KeepCoding.PathManager.CombineMultiple(System.String[])">
             <summary>
-            Gets the assembly's directory where the type <typeparamref name="T"/> exists.
+            Combines multiple paths together.
             </summary>
-            <typeparam name="T">The type to get the assembly directory of.</typeparam>
-            <returns>The path to the directory of the assembly where the type <typeparamref name="T"/> comes from.</returns>
+            <param name="paths">The paths to combine with.</param>
+            <returns>A single path consisting of the combined path of the array.</returns>
         </member>
         <member name="M:KeepCoding.PathManager.NameOfAssembly(System.Type)">
             <summary>
@@ -5990,12 +6218,12 @@
             <param name="type">The type to get the assembly directory of.</param>
             <returns>The path to the directory of the assembly where the type <paramref name="type"/> comes from.</returns>
         </member>
-        <member name="M:KeepCoding.PathManager.CombineMultiple(System.String[])">
+        <member name="M:KeepCoding.PathManager.NameOfAssembly``1">
             <summary>
-            Combines multiple paths together.
+            Gets the assembly's directory where the type <typeparamref name="T"/> exists.
             </summary>
-            <param name="paths">The paths to combine with.</param>
-            <returns>A single path consisting of the combined path of the array.</returns>
+            <typeparam name="T">The type to get the assembly directory of.</typeparam>
+            <returns>The path to the directory of the assembly where the type <typeparamref name="T"/> comes from.</returns>
         </member>
         <member name="M:KeepCoding.PathManager.GetModInfo(System.String)">
             <summary>
@@ -6096,20 +6324,18 @@
             <param name="_">Any data from the assembly, which is used to get the name.</param>
             <param name="libraryFileName">The library's name, excluding the extension.</param>
         </member>
-        <member name="M:KeepCoding.PathManager.LoadVideoClips(System.String,System.String)">
+        <member name="M:KeepCoding.PathManager.GetAssets``1(System.String,System.String)">
             <summary>
-            Gets the video clips, the last yield return contains all of the videos.
+            Retrieves assets of a specific type from a different bundle file.
             </summary>
-            <exception cref="T:KeepCoding.EmptyIteratorException"></exception>
-            <exception cref="T:System.IO.FileNotFoundException"></exception>
-            <exception cref="T:KeepCoding.NullIteratorException"></exception>
+            <typeparam name="TAsset">The type of asset to retrieve.</typeparam>
             <param name="bundleFileName">The name of the bundle file.</param>
-            <param name="bundleVideoFileName">The name of the bundle that contains videos.</param>
-            <returns>The <see cref="T:UnityEngine.AssetBundleCreateRequest"/> needed to load the files, followed by the <see cref="T:UnityEngine.Video.VideoClip"/> <see cref="T:System.Array"/>.</returns>
+            <param name="bundleAssetFileName">The name of the bundle file to grab the assets from.</param>
+            <returns>The assets retrieved from the file.</returns>
         </member>
-        <member name="M:KeepCoding.PathManager.LoadVideoClips(System.Type,System.String)">
+        <member name="M:KeepCoding.PathManager.GetAssets``1(System.Type,System.String)">
             <summary>
-            Gets the video clips, the last yield return contains all of the videos.
+            Retrieves assets of a specific type from a different bundle file.
             </summary>
             <exception cref="T:KeepCoding.EmptyIteratorException"></exception>
             <exception cref="T:System.IO.FileNotFoundException"></exception>
@@ -6118,14 +6344,15 @@
             <param name="bundleVideoFileName">The name of the bundle that contains videos.</param>
             <returns>The <see cref="T:UnityEngine.AssetBundleCreateRequest"/> needed to load the files, followed by the <see cref="T:UnityEngine.Video.VideoClip"/> <see cref="T:System.Array"/>.</returns>
         </member>
-        <member name="M:KeepCoding.PathManager.LoadVideoClips``1(``0,System.String)">
+        <member name="M:KeepCoding.PathManager.GetAssets``2(``0,System.String)">
             <summary>
-            Gets the video clips, the last yield return contains all of the videos.
+            Retrieves assets of a specific type from a different bundle file.
             </summary>
             <exception cref="T:KeepCoding.EmptyIteratorException"></exception>
             <exception cref="T:System.IO.FileNotFoundException"></exception>
             <exception cref="T:KeepCoding.NullIteratorException"></exception>
             <typeparam name="T">The type to get the assembly from, which is used to get the name.</typeparam>
+            <typeparam name="TAsset">The type of asset to return.</typeparam>
             <param name="_">Any data from the assembly, which is used to get the name.</param>
             <param name="bundleVideoFileName">The name of the bundle that contains videos.</param>
             <returns>The <see cref="T:UnityEngine.AssetBundleCreateRequest"/> needed to load the files, followed by the <see cref="T:UnityEngine.Video.VideoClip"/> <see cref="T:System.Array"/>.</returns>
