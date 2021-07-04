@@ -17,4 +17,5 @@ Community features added:
 -KeepCoding (By Emik)
 -KTaNE Utilities (By samfundev)
 -KTaNE Module Utils (By Qkrisi)
+-Custom Assets (By Royal_Flu$h)
 ```
