@@ -44,7 +44,7 @@ public class AssetBundler
     /// <summary>
     /// Folders which should not be included in the asset bundling process.
     /// </summary>
-    public static string[] EXCLUDED_FOLDERS = new string[] { "Assets/Editor", "Assets/TestHarness" };
+    public static string[] EXCLUDED_FOLDERS = new string[] { "Assets/Editor", "Assets/TestHarness", "Lib" };
 
 
     #region Internal bundler Variables
@@ -132,14 +132,14 @@ public class AssetBundler
             bool UseHarmony = false;
 
             //Build the assembly using either MSBuild or Unity EditorUtility methods
-            if (mode == AssemblyMode.MSBuild)
-            {
-                bundler.CompileAssemblyWithMSBuild();
-            }
-            else if (mode == AssemblyMode.WithEditorUtility)
-            {
-                bundler.CompileAssemblyWithEditor();
-            }
+            // if (mode == AssemblyMode.MSBuild)
+            // {
+            //     bundler.CompileAssemblyWithMSBuild();
+            // }
+            // else if (mode == AssemblyMode.WithEditorUtility)
+            // {
+            //     bundler.CompileAssemblyWithEditor();
+            // }
 
             //Copy any other non-Editor managed assemblies to the output folder
             bundler.CopyManagedAssemblies(ref UseHarmony);
